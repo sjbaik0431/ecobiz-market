@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="에코비즈마켓 — 자원순환기업 전문 M&A 거래소. 폐기물처리·재활용 기업 매물을 안전하게 중개합니다.">
+<title>에코비즈마켓 | 자원순환기업 전문 M&A 거래소</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#2d6a4f;--secondary:#40916c;--accent:#74c69d;--light:#d8f3dc;
+  --dark:#1b4332;--text:#212529;--muted:#6c757d;--white:#fff;
+  --warn:#f4a261;--danger:#e63946;--info:#0077b6;
+  --shadow:0 4px 24px rgba(0,0,0,.09);--radius:12px;
+  --font:'Noto Sans KR',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);color:var(--text);background:#f8fdf9;line-height:1.6}
+a{text-decoration:none;color:inherit}
+img{max-width:100%}
+button{cursor:pointer;font-family:var(--font)}
+
+/* ── HEADER ── */
+header{position:sticky;top:0;z-index:900;background:var(--white);box-shadow:0 2px 12px rgba(0,0,0,.08);padding:0 24px}
+.header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;height:64px;gap:24px}
+.logo{display:flex;align-items:center;gap:10px;font-size:1.25rem;font-weight:700;color:var(--primary);white-space:nowrap}
+.logo svg{width:32px;height:32px;flex-shrink:0}
+nav{display:flex;gap:4px;flex:1}
+nav a{padding:8px 14px;border-radius:8px;font-size:.9rem;font-weight:500;color:var(--muted);transition:all .2s}
+nav a:hover{color:var(--primary);background:var(--light)}
+.header-cta{margin-left:auto;background:var(--primary);color:var(--white);border:none;padding:10px 18px;border-radius:8px;font-size:.875rem;font-weight:600;white-space:nowrap;transition:background .2s}
+.header-cta:hover{background:var(--dark)}
+.menu-btn{display:none;background:none;border:none;font-size:1.5rem;color:var(--primary);padding:4px}
+.mobile-nav{display:none;flex-direction:column;background:var(--white);border-top:1px solid #eee;padding:12px 24px}
+.mobile-nav a{padding:12px 0;border-bottom:1px solid #f0f0f0;font-weight:500;color:var(--text)}
+.mobile-nav a:last-child{border:none}
+.mobile-nav.open{display:flex}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,#1b4332 0%,#2d6a4f 60%,#40916c 100%);padding:80px 24px 64px;text-align:center;color:var(--white)}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-1px;margin-bottom:12px}
+.hero h1 span{color:var(--accent)}
+.hero p{font-size:clamp(1rem,2.5vw,1.2rem);opacity:.88;margin-bottom:8px}
+.hero small{font-size:.85rem;opacity:.7;display:block;margin-bottom:36px}
+.search-box{max-width:640px;margin:0 auto 32px;display:flex;gap:8px;background:rgba(255,255,255,.12);border-radius:14px;padding:8px}
+.search-box input{flex:1;background:rgba(255,255,255,.9);border:none;border-radius:8px;padding:12px 16px;font-size:1rem;font-family:var(--font);outline:none;color:var(--text)}
+.search-box select{background:rgba(255,255,255,.9);border:none;border-radius:8px;padding:12px 12px;font-size:.9rem;font-family:var(--font);color:var(--text);outline:none}
+.search-box button{background:var(--accent);color:var(--dark);border:none;border-radius:8px;padding:12px 22px;font-weight:700;font-size:.95rem;white-space:nowrap;transition:background .2s}
+.search-box button:hover{background:#52b788}
+.trust-badges{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+.trust-badges span{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:6px 16px;font-size:.8rem;font-weight:500}
+
+/* ── STATS ── */
+.stats{background:var(--white);padding:40px 24px;box-shadow:var(--shadow)}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.stat-card{text-align:center;padding:20px 16px;border-radius:var(--radius);background:var(--light)}
+.stat-num{font-size:2rem;font-weight:900;color:var(--primary)}
+.stat-label{font-size:.85rem;color:var(--muted);margin-top:4px}
+
+/* ── FILTERS ── */
+.filters{background:#f0faf3;border-bottom:1px solid #ddeee5;padding:20px 24px}
+.filters-inner{max-width:1200px;margin:0 auto}
+.filter-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;align-items:center}
+.filter-label{font-size:.8rem;font-weight:700;color:var(--muted);width:48px;flex-shrink:0}
+.filter-btn{background:var(--white);border:1.5px solid #cde8d4;border-radius:20px;padding:6px 14px;font-size:.82rem;font-weight:500;color:var(--text);transition:all .2s}
+.filter-btn:hover,.filter-btn.active{background:var(--primary);border-color:var(--primary);color:var(--white)}
+.sort-row{display:flex;align-items:center;gap:8px;margin-top:4px}
+.sort-row select{background:var(--white);border:1.5px solid #cde8d4;border-radius:8px;padding:6px 12px;font-size:.82rem;font-family:var(--font);color:var(--text);outline:none}
+#result-count{font-size:.85rem;color:var(--muted);margin-left:auto}
+
+/* ── LISTINGS ── */
+.listings{max-width:1200px;margin:0 auto;padding:32px 24px}
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-4px);box-shadow:0 8px 32px rgba(45,106,79,.18)}
+.card-bar{height:4px}
+.card-body{padding:18px 18px 14px;flex:1}
+.card-badges{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.badge{padding:4px 10px;border-radius:12px;font-size:.72rem;font-weight:700;color:var(--white)}
+.badge-status{padding:4px 10px;border-radius:12px;font-size:.72rem;font-weight:700;color:var(--white)}
+.card h3{font-size:1.05rem;font-weight:700;margin-bottom:6px;color:var(--text)}
+.card-meta{font-size:.82rem;color:var(--muted);margin-bottom:4px}
+.card-type{font-size:.8rem;color:var(--secondary);font-weight:500;margin-bottom:12px}
+hr.divider{border:none;border-top:1px solid #eef5f1;margin:10px 0}
+.card-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.metric{text-align:center;background:#f8fdf9;border-radius:8px;padding:8px 4px}
+.metric-val{font-size:.88rem;font-weight:700;color:var(--primary)}
+.metric-label{font-size:.7rem;color:var(--muted);margin-top:2px}
+.card-price{background:linear-gradient(90deg,var(--light),#f0faf3);border-radius:8px;padding:10px 14px;margin-bottom:12px}
+.price-label{font-size:.75rem;color:var(--muted)}
+.price-val{font-size:1.15rem;font-weight:900;color:var(--primary)}
+.price-note{font-size:.72rem;color:var(--muted);margin-top:2px}
+.card-btn{width:100%;background:var(--primary);color:var(--white);border:none;border-radius:8px;padding:11px;font-size:.9rem;font-weight:600;transition:background .2s;margin-top:auto}
+.card-btn:hover{background:var(--dark)}
+.empty-state{text-align:center;padding:80px 20px;color:var(--muted);grid-column:1/-1}
+.empty-state .icon{font-size:3rem;margin-bottom:16px}
+
+/* ── MODAL BASE ── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1000;overflow-y:auto;padding:20px}
+.modal-overlay.open{display:flex;align-items:flex-start;justify-content:center}
+.modal-panel{background:var(--white);border-radius:16px;width:100%;max-width:860px;position:relative;overflow:hidden;margin:auto}
+
+/* ── DETAIL MODAL ── */
+.modal-header{background:linear-gradient(135deg,var(--dark),var(--primary));color:var(--white);padding:28px 28px 22px}
+.modal-close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.2);border:none;color:var(--white);width:36px;height:36px;border-radius:50%;font-size:1.2rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s}
+.modal-close:hover{background:rgba(255,255,255,.35)}
+.modal-header h2{font-size:1.5rem;font-weight:900;margin:12px 0 8px}
+.modal-location{font-size:.9rem;opacity:.85}
+.safety-banner{background:#fff9e6;border:1px solid #f4c642;border-radius:10px;padding:12px 16px;margin:16px;display:flex;gap:10px;align-items:flex-start;font-size:.83rem;color:#7a5c00}
+.safety-banner svg{flex-shrink:0;margin-top:2px}
+.tabs{display:flex;border-bottom:2px solid #eef5f1;padding:0 16px;background:var(--white);position:sticky;top:0;z-index:10}
+.tab-btn{padding:14px 18px;background:none;border:none;font-size:.9rem;font-weight:500;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .2s}
+.tab-btn.active{color:var(--primary);border-bottom-color:var(--primary);font-weight:700}
+.tab-pane{display:none;padding:20px}
+.tab-pane.active{display:block}
+.info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px}
+.info-item{background:#f8fdf9;border-radius:10px;padding:12px}
+.info-item label{font-size:.75rem;color:var(--muted);display:block;margin-bottom:4px}
+.info-item span{font-size:.95rem;font-weight:600}
+.features-list{list-style:none;padding:0}
+.features-list li{padding:7px 0;border-bottom:1px solid #f0f7f3;font-size:.9rem;display:flex;gap:8px}
+.features-list li::before{content:"✓";color:var(--secondary);font-weight:700;flex-shrink:0}
+.financial-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px}
+.fin-card{background:var(--light);border-radius:10px;padding:14px;text-align:center}
+.fin-card .val{font-size:1.2rem;font-weight:900;color:var(--primary)}
+.fin-card .label{font-size:.75rem;color:var(--muted);margin-top:4px}
+.price-highlight{background:linear-gradient(135deg,var(--primary),var(--secondary));color:var(--white);border-radius:12px;padding:20px;text-align:center;margin-top:12px}
+.price-highlight .big{font-size:1.6rem;font-weight:900}
+.price-highlight small{opacity:.85;font-size:.82rem}
+.tag-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.tag{background:var(--light);color:var(--primary);border-radius:8px;padding:5px 12px;font-size:.8rem;font-weight:500}
+.facility-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:8px}
+.facility-item{background:#f8fdf9;border-left:3px solid var(--accent);padding:8px 12px;border-radius:0 8px 8px 0;font-size:.85rem}
+.land-box{background:var(--light);border-radius:10px;padding:16px;margin-top:12px}
+.land-box h4{font-size:.85rem;color:var(--muted);margin-bottom:8px}
+.land-row{display:flex;justify-content:space-between;padding:4px 0;font-size:.88rem;border-bottom:1px solid #cde8d4}
+.land-row:last-child{border:none}
+.location-box{background:#f8fdf9;border-radius:10px;padding:16px;font-size:.9rem;line-height:1.8}
+.address-row{background:var(--light);border-radius:8px;padding:10px 14px;font-size:.88rem;font-weight:600;margin-bottom:12px}
+.modal-footer{display:flex;gap:10px;padding:16px 20px;border-top:1px solid #eef5f1;background:var(--white);position:sticky;bottom:0}
+.btn-back{flex:1;background:#f0f0f0;color:var(--text);border:none;border-radius:8px;padding:12px;font-size:.9rem;font-weight:600}
+.btn-inquire{flex:2;background:var(--primary);color:var(--white);border:none;border-radius:8px;padding:12px;font-size:.95rem;font-weight:700}
+.btn-inquire:hover{background:var(--dark)}
+
+/* ── INQUIRY MODAL ── */
+.inq-panel{background:var(--white);border-radius:16px;width:100%;max-width:560px;margin:auto}
+.inq-header{padding:24px 24px 16px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center}
+.inq-header h3{font-size:1.15rem;font-weight:700}
+.inq-body{padding:20px 24px}
+.inq-notice{background:#fff9e6;border:1px solid #f4c642;border-radius:10px;padding:14px;font-size:.82rem;color:#7a5c00;margin-bottom:18px;line-height:1.6}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:.85rem;font-weight:600;margin-bottom:6px;color:var(--text)}
+.form-group label .req{color:var(--danger);margin-left:2px}
+.form-group input,.form-group select,.form-group textarea{width:100%;border:1.5px solid #dde8e0;border-radius:8px;padding:10px 12px;font-size:.9rem;font-family:var(--font);outline:none;transition:border-color .2s;color:var(--text)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--secondary)}
+.form-group textarea{resize:vertical;min-height:90px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.checkbox-row{display:flex;align-items:flex-start;gap:10px;font-size:.82rem;color:var(--muted);margin-bottom:16px}
+.checkbox-row input{margin-top:3px;accent-color:var(--primary);flex-shrink:0}
+.btn-submit{width:100%;background:var(--primary);color:var(--white);border:none;border-radius:8px;padding:14px;font-size:1rem;font-weight:700;transition:background .2s}
+.btn-submit:hover{background:var(--dark)}
+
+/* ── FOOTER ── */
+footer{background:var(--dark);color:rgba(255,255,255,.8);padding:48px 24px 24px}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;margin-bottom:32px}
+.footer-brand p{font-size:.85rem;line-height:1.8;margin-top:10px;opacity:.75}
+.footer-col h4{font-size:.9rem;font-weight:700;color:var(--white);margin-bottom:14px}
+.footer-col a{display:block;font-size:.83rem;margin-bottom:8px;opacity:.7;transition:opacity .2s}
+.footer-col a:hover{opacity:1}
+.footer-contact p{font-size:.83rem;margin-bottom:6px;opacity:.8}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;display:flex;flex-direction:column;gap:8px}
+.disclaimer{font-size:.75rem;opacity:.6;line-height:1.6}
+.copyright{font-size:.78rem;opacity:.5}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .cards-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .footer-brand{grid-column:1/-1}
+}
+@media(max-width:768px){
+  nav{display:none}
+  .header-cta{display:none}
+  .menu-btn{display:block}
+  .hero{padding:56px 16px 48px}
+  .search-box{flex-direction:column;background:transparent;padding:0;gap:10px}
+  .search-box input,.search-box select,.search-box button{border-radius:10px}
+  .search-box button{padding:14px}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .cards-grid{grid-template-columns:1fr}
+  .filter-row{gap:6px}
+  .filter-label{display:none}
+  .info-grid{grid-template-columns:1fr}
+  .financial-grid{grid-template-columns:1fr 1fr}
+  .facility-grid{grid-template-columns:1fr}
+  .tab-btn{padding:12px 10px;font-size:.8rem}
+  .form-row{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .modal-header{padding:20px}
+  .modal-panel{border-radius:12px 12px 0 0;margin-top:auto}
+  .modal-overlay.open{align-items:flex-end;padding:0}
+}
+@media(max-width:480px){
+  .trust-badges span{font-size:.75rem;padding:5px 12px}
+  .card-metrics{grid-template-columns:repeat(3,1fr);gap:4px}
+  .metric-val{font-size:.78rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="16" cy="16" r="15" fill="#d8f3dc"/>
+        <path d="M16 8 C11 8 8 11.5 8 16 C8 20.4 11 24 16 24" stroke="#2d6a4f" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M16 8 L13 5 M16 8 L19 5" stroke="#2d6a4f" stroke-width="2" stroke-linecap="round"/>
+        <path d="M16 24 C21 24 24 20.5 24 16 C24 11.6 21 8 16 8" stroke="#40916c" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M16 24 L19 27 M16 24 L13 27" stroke="#40916c" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      에코비즈마켓
+    </a>
+    <nav>
+      <a href="#listings">매물 목록</a>
+      <a href="#about">중개 서비스</a>
+      <a href="#process">거래 안내</a>
+      <a href="#contact">회사 소개</a>
+    </nav>
+    <button class="header-cta" onclick="openInquiryModal('')">매물 등록 문의</button>
+    <button class="menu-btn" id="menuBtn" aria-label="메뉴">☰</button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#listings" onclick="closeMobileNav()">매물 목록</a>
+    <a href="#about" onclick="closeMobileNav()">중개 서비스</a>
+    <a href="#process" onclick="closeMobileNav()">거래 안내</a>
+    <a href="#contact" onclick="closeMobileNav()">회사 소개</a>
+    <a href="#" onclick="openInquiryModal('');closeMobileNav()">매물 등록 문의</a>
+  </div>
+</header>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <h1>에코<span>비즈</span>마켓</h1>
+  <p>자원순환기업 전문 M&amp;A 거래소</p>
+  <small>믿을 수 있는 중개, 투명한 거래 — 자원순환시설 기업을 사고파는 전문 플랫폼</small>
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="기업명, 지역, 업종으로 검색..." onkeydown="if(event.key==='Enter')applyFilters()">
+    <select id="regionSelect" onchange="applyFilters()">
+      <option value="">전국</option>
+      <option value="경기">경기</option>
+      <option value="서울">서울</option>
+      <option value="인천">인천</option>
+      <option value="부산">부산</option>
+      <option value="충청">충청</option>
+      <option value="전라">전라/광주</option>
+      <option value="경상">경상</option>
+      <option value="울산">울산</option>
+    </select>
+    <button onclick="applyFilters()">검색</button>
+  </div>
+  <div class="trust-badges">
+    <span>🔒 안전 중개 시스템</span>
+    <span>✅ 허가·재무 검증</span>
+    <span>📋 무료 상담</span>
+    <span>⚡ 24시간 응대</span>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stat-card">
+      <div class="stat-num" id="sNum1">10</div>
+      <div class="stat-label">전국 매물 (건)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">47</div>
+      <div class="stat-label">성공 중개 (건)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">10</div>
+      <div class="stat-label">등록 기업</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">8</div>
+      <div class="stat-label">전문 중개사</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FILTERS ── -->
+<section class="filters">
+  <div class="filters-inner">
+    <div class="filter-row">
+      <span class="filter-label">지역</span>
+      <button class="filter-btn active" data-region="" onclick="setFilter('region',this,'')">전국</button>
+      <button class="filter-btn" data-region="경기" onclick="setFilter('region',this,'경기')">경기</button>
+      <button class="filter-btn" data-region="인천" onclick="setFilter('region',this,'인천')">인천</button>
+      <button class="filter-btn" data-region="부산" onclick="setFilter('region',this,'부산')">부산</button>
+      <button class="filter-btn" data-region="충남" onclick="setFilter('region',this,'충남')">충청</button>
+      <button class="filter-btn" data-region="광주" onclick="setFilter('region',this,'광주')">전라/광주</button>
+      <button class="filter-btn" data-region="울산" onclick="setFilter('region',this,'울산')">울산</button>
+    </div>
+    <div class="filter-row">
+      <span class="filter-label">업종</span>
+      <button class="filter-btn active" data-cat="" onclick="setFilter('cat',this,'')">전체</button>
+      <button class="filter-btn" data-cat="재활용업" onclick="setFilter('cat',this,'재활용업')">재활용업</button>
+      <button class="filter-btn" data-cat="처리업" onclick="setFilter('cat',this,'처리업')">처리업</button>
+      <button class="filter-btn" data-cat="자원화업" onclick="setFilter('cat',this,'자원화업')">자원화업</button>
+    </div>
+    <div class="filter-row">
+      <span class="filter-label">매각가</span>
+      <button class="filter-btn active" data-price="" onclick="setFilter('price',this,'')">전체</button>
+      <button class="filter-btn" data-price="under30" onclick="setFilter('price',this,'under30')">30억 미만</button>
+      <button class="filter-btn" data-price="30to60" onclick="setFilter('price',this,'30to60')">30~60억</button>
+      <button class="filter-btn" data-price="60to100" onclick="setFilter('price',this,'60to100')">60~100억</button>
+      <button class="filter-btn" data-price="over100" onclick="setFilter('price',this,'over100')">100억 이상</button>
+    </div>
+    <div class="sort-row">
+      <span style="font-size:.82rem;color:var(--muted);font-weight:700">정렬</span>
+      <select id="sortSelect" onchange="applyFilters()">
+        <option value="id">등록순</option>
+        <option value="price_asc">가격 낮은순</option>
+        <option value="price_desc">가격 높은순</option>
+        <option value="revenue">매출 높은순</option>
+      </select>
+      <span id="result-count"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ── LISTINGS ── -->
+<section class="listings" id="listings">
+  <div class="cards-grid" id="cardsGrid"></div>
+</section>
+
+<!-- ── DETAIL MODAL ── -->
+<div class="modal-overlay" id="detailModal" onclick="handleOverlayClick(event,'detailModal')">
+  <div class="modal-panel">
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeModal('detailModal')">✕</button>
+      <div id="modal-badges" class="card-badges"></div>
+      <h2 id="modal-name"></h2>
+      <div class="modal-location" id="modal-location"></div>
+    </div>
+    <div class="safety-banner">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b58000" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <div><strong>안전 중개 안내</strong><br>모든 거래는 에코비즈마켓 전담 중개팀을 통해서만 진행됩니다. 판매자와의 직접 연락은 제공되지 않으며, 무단 직거래 발견 시 서비스 이용이 제한됩니다.</div>
+    </div>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('intro')">기업 소개</button>
+      <button class="tab-btn" onclick="switchTab('finance')">재무 현황</button>
+      <button class="tab-btn" onclick="switchTab('facility')">시설·허가</button>
+      <button class="tab-btn" onclick="switchTab('location')">입지 현황</button>
+    </div>
+    <div id="tab-intro" class="tab-pane active">
+      <p id="m-desc" style="font-size:.92rem;line-height:1.8;color:#333;margin-bottom:18px"></p>
+      <div class="info-grid">
+        <div class="info-item"><label>설립연도</label><span id="m-year"></span></div>
+        <div class="info-item"><label>직원수</label><span id="m-emp"></span></div>
+        <div class="info-item"><label>사업 유형</label><span id="m-btype" style="font-size:.85rem"></span></div>
+        <div class="info-item"><label>매각 사유</label><span id="m-reason" style="font-size:.82rem;font-weight:400"></span></div>
+      </div>
+      <h4 style="font-size:.88rem;color:var(--muted);margin-bottom:8px;font-weight:700">특장점</h4>
+      <ul class="features-list" id="m-features"></ul>
+    </div>
+    <div id="tab-finance" class="tab-pane">
+      <div class="financial-grid">
+        <div class="fin-card"><div class="val" id="m-rev"></div><div class="label">연 매출</div></div>
+        <div class="fin-card"><div class="val" id="m-op"></div><div class="label">영업이익</div></div>
+        <div class="fin-card"><div class="val" id="m-net"></div><div class="label">당기순이익</div></div>
+        <div class="fin-card"><div class="val" id="m-ebitda"></div><div class="label">EBITDA</div></div>
+      </div>
+      <p id="m-finsummary" style="font-size:.88rem;line-height:1.8;color:#444;margin-bottom:16px"></p>
+      <div class="price-highlight">
+        <div style="font-size:.82rem;opacity:.85;margin-bottom:4px">희망 매각가</div>
+        <div class="big" id="m-price"></div>
+        <small id="m-price-note"></small>
+      </div>
+    </div>
+    <div id="tab-facility" class="tab-pane">
+      <div class="info-item" style="margin-bottom:16px">
+        <label>허가 용량</label>
+        <span id="m-capacity" style="font-size:1.1rem;font-weight:700;color:var(--primary)"></span>
+      </div>
+      <h4 style="font-size:.88rem;color:var(--muted);margin-bottom:8px;font-weight:700">보유 허가</h4>
+      <div class="tag-list" id="m-licenses"></div>
+      <h4 style="font-size:.88rem;color:var(--muted);margin:16px 0 8px;font-weight:700">주요 시설</h4>
+      <div class="facility-grid" id="m-facilities"></div>
+      <h4 style="font-size:.88rem;color:var(--muted);margin:16px 0 8px;font-weight:700">보유 인증</h4>
+      <div class="tag-list" id="m-certs"></div>
+      <div class="land-box">
+        <h4>토지·건물 현황</h4>
+        <div class="land-row"><span>토지면적</span><span id="m-land"></span></div>
+        <div class="land-row"><span>건물면적</span><span id="m-bldg"></span></div>
+        <div class="land-row"><span>토지 소유</span><span id="m-landtype"></span></div>
+      </div>
+    </div>
+    <div id="tab-location" class="tab-pane">
+      <div class="address-row">📍 <span id="m-address"></span></div>
+      <p id="m-locadv" style="font-size:.9rem;line-height:1.85;color:#333"></p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-back" onclick="closeModal('detailModal')">목록으로</button>
+      <button class="btn-inquire" id="inquire-btn" onclick="">📩 중개 문의하기</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── INQUIRY MODAL ── -->
+<div class="modal-overlay" id="inquiryModal" onclick="handleOverlayClick(event,'inquiryModal')">
+  <div class="inq-panel">
+    <div class="inq-header">
+      <h3>📩 중개 문의하기</h3>
+      <button class="modal-close" style="position:static;background:#f0f0f0;color:var(--text)" onclick="closeModal('inquiryModal')">✕</button>
+    </div>
+    <div class="inq-body">
+      <div class="inq-notice">
+        🔒 <strong>에코비즈마켓 안전 중개 시스템</strong><br>
+        본 서비스의 모든 거래는 전담 중개팀을 통해서만 진행됩니다. 판매자·매수자 간 직접 연락 정보는 제공되지 않습니다. 문의 접수 후 24시간 이내 담당 중개사가 연락드립니다.
+      </div>
+      <form id="inquiryForm" onsubmit="submitInquiry(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>이름 <span class="req">*</span></label>
+            <input type="text" id="inq-name" placeholder="홍길동" required>
+          </div>
+          <div class="form-group">
+            <label>연락처 <span class="req">*</span></label>
+            <input type="tel" id="inq-phone" placeholder="010-0000-0000" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>이메일 <span class="req">*</span></label>
+          <input type="email" id="inq-email" placeholder="example@email.com" required>
+        </div>
+        <div class="form-group">
+          <label>문의 유형 <span class="req">*</span></label>
+          <select id="inq-type" required>
+            <option value="">선택해 주세요</option>
+            <option value="buy">매수 관심</option>
+            <option value="sell">매도 등록</option>
+            <option value="valuation">기업 가치 평가</option>
+            <option value="other">기타 문의</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>관심 기업명</label>
+          <input type="text" id="inq-company" placeholder="관심 있는 매물 기업명 (선택)">
+        </div>
+        <div class="form-group">
+          <label>문의 내용 <span class="req">*</span></label>
+          <textarea id="inq-msg" placeholder="문의 내용을 입력해 주세요..." required></textarea>
+        </div>
+        <div class="checkbox-row">
+          <input type="checkbox" id="inq-agree" required>
+          <label for="inq-agree">개인정보 수집·이용에 동의합니다. (수집 항목: 이름, 연락처, 이메일 / 목적: 중개 상담 / 보유기간: 상담 완료 후 1년)</label>
+        </div>
+        <button type="submit" class="btn-submit">문의 제출하기</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo" style="color:var(--white)">
+        <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" fill="rgba(255,255,255,.15)"/><path d="M16 8 C11 8 8 11.5 8 16 C8 20.4 11 24 16 24" stroke="#74c69d" stroke-width="2.5" stroke-linecap="round" fill="none"/><path d="M16 8 L13 5 M16 8 L19 5" stroke="#74c69d" stroke-width="2" stroke-linecap="round"/><path d="M16 24 C21 24 24 20.5 24 16 C24 11.6 21 8 16 8" stroke="#d8f3dc" stroke-width="2.5" stroke-linecap="round" fill="none"/><path d="M16 24 L19 27 M16 24 L13 27" stroke="#d8f3dc" stroke-width="2" stroke-linecap="round"/></svg>
+        에코비즈마켓
+      </div>
+      <p>자원순환기업 전문 M&amp;A 거래소<br>폐기물처리·재활용 기업의 안전하고 투명한 거래를 중개합니다.</p>
+    </div>
+    <div class="footer-col" id="about">
+      <h4>서비스</h4>
+      <a href="#">서비스 소개</a>
+      <a href="#" id="process">중개 절차 안내</a>
+      <a href="#">이용약관</a>
+      <a href="#">개인정보처리방침</a>
+    </div>
+    <div class="footer-col footer-contact">
+      <h4>중개팀 연락처</h4>
+      <p>📞 대표 전화: 02-1234-5678</p>
+      <p>✉️ eco@ecobizmarket.co.kr</p>
+      <p>🕐 평일 09:00 ~ 18:00</p>
+      <p style="margin-top:12px;font-size:.78rem;opacity:.6">* 직거래 연결은 불가합니다</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="disclaimer">⚠️ 본 플랫폼의 모든 기업 정보는 에코비즈마켓 중개팀이 검증한 매물입니다. 판매자·매수자 간 직거래를 엄금하며, 모든 거래는 반드시 중개팀을 통해 진행되어야 합니다. 게재된 정보는 참고용이며 실제 거래 조건과 다를 수 있습니다.</p>
+    <p class="copyright">Copyright © 2025 에코비즈마켓 (EcoBiz Market). All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+const COMPANIES = [
+  {id:1,name:"(주)반월그린텍",badge:"폐합성수지",badge_color:"#1b7a4e",location:"경기 안산시",address:"경기도 안산시 단원구 반월공단로 247번길 38",business_type:"폐합성수지 수집·선별·재활용업",business_category:"재활용업",established_year:2005,employees:42,annual_revenue:"54억원",operating_profit:"7.3억원",net_profit:"5.1억원",ebitda:"10.2억원",license_capacity:"일 최대 80톤",asking_price:"62~72억원",price_note:"토지·건물·시설 일괄 (토지 자가 포함)",land_area:"4,950㎡",building_area:"2,800㎡",land_type:"자가 소유",status:"매각 진행중",status_color:"#f4a261",licenses:["폐기물 재활용업 허가 (경기도)","폐합성수지 재생원료 제조업 신고","배출시설 설치 허가","사업장 일반폐기물 수집·운반 허가"],facilities:["파쇄기 3기 (100HP급 포함)","비중선별기 2기","세척·건조 라인 1식","압출·펠렛타이징기 2기","지게차 4대, 크레인 2기"],certifications:["ISO 14001 환경경영시스템","환경부 우수 재활용업체 인증","KS M 6951 재생 폴리에틸렌 규격"],features:["반월국가산업단지 내 최적 입지로 원료 수급 안정성 탁월","PE·PP·ABS 등 혼합 합성수지 전처리~펠렛 생산 일관 공정 보유","연간 약 2만 톤 처리 실적, 5개 이상 대기업 계열 안정 거래처 확보","20년 이상 업력 현장 기술인력 다수 재직, 기술 이전 가능","산업단지 내 용수·전력 인프라 완비, 증설 여유 부지 1,200㎡ 확보","재생원료 판매 단가 상승 추세로 수익성 개선 중"],reason_for_sale:"대표이사 고령화(65세)로 인한 은퇴 계획 및 가업 승계 후계자 부재.",description:"(주)반월그린텍은 2005년 설립 이후 20년 이상 경기도 안산 반월공단을 거점으로 폐합성수지 재활용 사업을 영위해온 중견 기업입니다. 주요 취급 품목은 폐PE·폐PP·폐ABS 등 혼합 합성수지이며, 원료 수집부터 파쇄·선별·세척·건조·펠렛화까지 전 공정을 자체 완결합니다. 최근 ESG 규제 강화와 플라스틱 세제 부과에 따라 재생원료 수요가 급증하고 있어 사업 성장 잠재력이 높습니다. 부지 내 잔여 공지를 활용한 추가 설비 투자로 처리 용량을 일 120톤 이상으로 확대할 수 있습니다.",financial_summary:"2023년 연매출 54억원, 영업이익 7.3억원으로 이익률 13.5%를 기록하며 전년 대비 8% 성장했습니다. 3개년 평균 매출 성장률 9.2%, 차입금 전무한 건전한 재무구조를 유지하고 있습니다.",location_advantage:"반월국가산업단지는 국내 최대 산업단지 중 하나로 원료 수급이 안정적입니다. 서해안고속도로·서울외곽순환고속도로 진입이 20분 이내로 수도권 전역 물류 커버리지가 탁월합니다."},
+  {id:2,name:"(주)화성종합환경",badge:"건설폐기물",badge_color:"#2d6a4f",location:"경기 화성시",address:"경기도 화성시 향남읍 발안산단로 154",business_type:"건설폐기물 중간처리업",business_category:"처리업",established_year:2003,employees:58,annual_revenue:"78억원",operating_profit:"11.4억원",net_profit:"8.2억원",ebitda:"15.6억원",license_capacity:"일 최대 200톤",asking_price:"95~115억원",price_note:"토지·건물·시설 일괄 (허가권 포함)",land_area:"8,200㎡",building_area:"3,600㎡",land_type:"자가 소유",status:"우선협상중",status_color:"#e63946",licenses:["건설폐기물 중간처리업 허가 (경기도)","폐기물 수집·운반업 허가","순환골재 품질 인증","배출시설 설치 허가","토양오염방지시설 설치 신고"],facilities:["조 크러셔 1기, 콘 크러셔 2기","진동 스크린 3단 2식","이물질 선별기 (자력·광학) 2기","세척수 재활용 시스템 1식","덤프트럭 6대, 굴삭기 3대"],certifications:["건설폐기물 순환골재 품질인증 (국토부)","ISO 14001 환경경영시스템","ISO 9001 품질경영시스템"],features:["경기 남부 최대 건설 수요지 인접으로 원료 반입량 안정 확보","순환골재 생산 품질 인증 보유로 공공공사 납품 자격 완비","콘크리트·아스콘·혼합 건폐 전 품목 처리 가능 다목적 라인","20년 이상 지역 건설사·철거업체와 장기 계약 네트워크 구축","자체 수집·운반 차량 보유로 물류 마진 내재화","허가 용량 대비 처리율 75% 수준, 증설 없이 매출 성장 여력 존재"],reason_for_sale:"주요 주주 간 경영권 분쟁 해소를 위한 공동 매각 결정.",description:"(주)화성종합환경은 2003년 설립되어 경기도 화성시 향남산업단지를 거점으로 건설폐기물 중간처리 전문 기업으로 성장해왔습니다. 폐콘크리트·폐아스팔트·건설혼합폐기물을 반입·파쇄·선별 처리하여 순환골재·재생아스콘 원료 등 유가 재활용 제품으로 전환합니다. 공공기관 발주 공사에 순환골재를 납품하는 안정적인 수익 구조를 갖추고 있습니다.",financial_summary:"2023년 연매출 78억원, 영업이익 11.4억원(이익률 14.6%)을 달성하였습니다. 3개년 평균 매출 성장률 11.3%, EBITDA 15.6억원으로 안정적인 현금흐름을 확보 중입니다.",location_advantage:"화성시 향남읍은 경기도 최대 개발·건설 수요 지역 중 하나로 건설폐기물 발생량이 안정적으로 유지됩니다. 서해안고속도로 발안 IC에서 5분 이내의 우수한 물류 접근성을 보유합니다."},
+  {id:3,name:"(주)인천바이오에너지",badge:"바이오가스",badge_color:"#52b788",location:"인천 남동구",address:"인천광역시 남동구 논현고잔동 남동산단 76번로 88",business_type:"음식물쓰레기 혐기성 소화·바이오가스화 처리업",business_category:"자원화업",established_year:2009,employees:35,annual_revenue:"43억원",operating_profit:"8.6억원",net_profit:"6.1억원",ebitda:"12.4억원",license_capacity:"일 최대 60톤",asking_price:"58~70억원",price_note:"토지 임차, 시설 및 허가권 일괄",land_area:"3,200㎡",building_area:"1,950㎡",land_type:"임차 (장기 임대)",status:"매각 진행중",status_color:"#f4a261",licenses:["폐기물 처리업 허가 (음식물류)","에너지 회수시설 설치 허가","대기배출시설 설치 허가","수질오염방지시설 운영 신고"],facilities:["전처리 파쇄·협잡물제거 설비 1식","혐기성 소화조 (2,000㎥급) 2기","바이오가스 정제·저장 설비 1식","바이오가스 발전기 (250kW) 2기","소화액 고액분리 설비 1식"],certifications:["ISO 14001 환경경영시스템","환경부 음식물폐기물 자원화 우수시설","신재생에너지 REC 발급 사업자"],features:["인천시 공공 음식물쓰레기 위탁처리 계약으로 원료 안정 확보","바이오가스 발전으로 전력 자급 및 잉여 전력 한전 판매 수익","REC 수익 연 1.2억원 추가 확보","소화액은 액비로 전환, 인근 농가 공급으로 폐액 제로화 실현","전처리~발전까지 완전 자동화 공정으로 인력 효율성 극대화"],reason_for_sale:"재무적 투자자(PE) 펀드 만기 도래로 인한 엑시트 매각.",description:"(주)인천바이오에너지는 2009년 설립되어 인천 남동산업단지를 거점으로 음식물류 폐기물의 혐기성 소화 처리 및 바이오가스 에너지화를 수행하는 전문 기업입니다. 인천시와의 공공 음식물 위탁처리 계약으로 일정 물량을 안정적으로 확보하고 있으며, 신재생에너지(REC) 판매 수익도 안정적으로 발생합니다.",financial_summary:"2023년 연매출 43억원, 영업이익 8.6억원(이익률 20.0%)의 고수익 구조를 유지하고 있습니다. EBITDA 12.4억원, REC 및 전력 판매 수익 합산 연 2.8억원이 부가 수익원입니다.",location_advantage:"인천 남동국가산업단지는 식품가공업체가 밀집되어 원료 발생 밀도가 높습니다. 인천항 및 제2경인고속도로와의 접근성이 우수합니다."},
+  {id:4,name:"(주)부산메탈리소스",badge:"폐금속회수",badge_color:"#168aad",location:"부산 강서구",address:"부산광역시 강서구 녹산산단 335로 42",business_type:"폐금속(고철·비철) 수집·선별·재활용업",business_category:"재활용업",established_year:2007,employees:48,annual_revenue:"132억원",operating_profit:"9.8억원",net_profit:"6.9억원",ebitda:"13.5억원",license_capacity:"일 최대 150톤",asking_price:"85~100억원",price_note:"토지·건물·시설 일괄 (토지 자가 소유)",land_area:"6,500㎡",building_area:"2,400㎡",land_type:"자가 소유",status:"검토 가능",status_color:"#2d6a4f",licenses:["폐기물 재활용업 허가 (부산시)","고철류 수집·운반업 허가","비철금속 재생업 신고","배출시설 설치 허가"],facilities:["대형 전단 압축기 2기 (500톤급)","자력선별기 3기","플라즈마 절단기 2기","비철금속 XRF 분석기 1식","크레인 3기 (5~10톤급)"],certifications:["ISO 14001 환경경영시스템","한국금속재활용협회 우수사업장","부산시 우수 재활용업체"],features:["녹산국가산업단지 내 조선·중공업 폐금속 원료 직접 수급","고철·스테인리스·알루미늄·동·아연 등 전 비철 품목 취급","XRF 분석기 보유로 비철금속 성분 즉시 분석, 고가 판매 실현","국내 전기로·제강업체 및 해외(일본·동남아) 수출 판로 보유","부산항 신항 15분 거리로 수출 물류 최적 입지"],reason_for_sale:"창업주 2세 미국 거주로 인한 가업 승계 포기.",description:"(주)부산메탈리소스는 2007년 설립되어 부산 강서구 녹산국가산업단지를 거점으로 폐고철 및 비철금속 수집·선별·재활용 사업을 영위합니다. 조선·해양플랜트·중공업 업체에서 발생하는 폐금속 스크랩을 주요 원료로 확보하고 있으며, 연간 약 4만 톤의 금속 재활용 실적을 보유합니다.",financial_summary:"2023년 연매출 132억원, 영업이익 9.8억원(이익률 7.4%). 3개년 평균 영업이익 9.1억원으로 안정적이며, EBITDA 13.5억원으로 현금창출력이 충분합니다.",location_advantage:"녹산국가산업단지는 조선·중공업 클러스터로 고품위 스크랩 원료 공급이 보장됩니다. 부산 신항까지 15분 이내로 수출 물류비가 동종 업계 대비 20% 이상 절감됩니다."},
+  {id:5,name:"(주)파주그린페이퍼",badge:"폐지재활용",badge_color:"#40916c",location:"경기 파주시",address:"경기도 파주시 탄현면 법흥리 문산산업단지로 88번지",business_type:"폐지·종이류 수집·선별·재활용업",business_category:"재활용업",established_year:2004,employees:33,annual_revenue:"61억원",operating_profit:"6.4억원",net_profit:"4.5억원",ebitda:"9.1억원",license_capacity:"일 최대 120톤",asking_price:"45~55억원",price_note:"토지 임차, 시설 일괄 (임차 잔여기간 8년)",land_area:"5,600㎡",building_area:"3,100㎡",land_type:"임차 (장기 임대)",status:"매각 진행중",status_color:"#f4a261",licenses:["폐기물 재활용업 허가 (경기도)","폐지류 수집·운반업 허가","대기배출시설 설치 신고"],facilities:["수평 베일러 3기 (대형 100톤급 포함)","컨베이어 선별 라인 2식","지게차 6대","파지 저장 창고 2,000㎡","계량 트럭 스케일 (80톤급)"],certifications:["ISO 14001 환경경영시스템","한국제지연합회 우수 원료공급업체","환경부 우수 재활용업체"],features:["파주출판도시·인쇄단지 폐지 원료 대량 안정 확보","골판지·신문지·백상지 등 품위별 분류 선별로 고단가 실현","국내 제지업체(한국제지·아세아제지 등) 장기 납품 계약 보유","수도권 쇼핑몰·유통업체 배출 폐지 정기 수거 계약 10건 이상"],reason_for_sale:"대표이사 건강 악화 및 사업 축소 희망.",description:"(주)파주그린페이퍼는 2004년 설립되어 경기 파주 문산산업단지를 거점으로 폐지·종이류 수집·선별·재활용 사업을 영위해온 기업입니다. 파주출판도시 인접의 지리적 이점을 활용하여 고품위 폐지를 안정적으로 수집하고 있으며, 연간 약 3만 톤의 폐지를 처리합니다.",financial_summary:"2023년 연매출 61억원, 영업이익 6.4억원(이익률 10.5%). 임차 구조로 초기 투자 부담이 낮으며 실질 현금흐름이 양호합니다.",location_advantage:"파주시는 경기 북부 최대 인쇄·출판 집적지로 고품위 폐지가 풍부합니다. 자유로·통일로 축을 통해 서울 서북권 물류 접근성이 탁월합니다."},
+  {id:6,name:"(주)아산열분해에너지",badge:"폐타이어",badge_color:"#1a6b5e",location:"충남 아산시",address:"충청남도 아산시 둔포면 아산테크노밸리 3로 77",business_type:"폐타이어 열분해 열분해유·카본블랙 생산업",business_category:"자원화업",established_year:2012,employees:28,annual_revenue:"36억원",operating_profit:"6.8억원",net_profit:"4.9억원",ebitda:"9.6억원",license_capacity:"일 최대 25톤",asking_price:"52~62억원",price_note:"토지·건물·시설 일괄 (설비 잔존가 포함)",land_area:"2,850㎡",building_area:"1,650㎡",land_type:"자가 소유",status:"검토 가능",status_color:"#2d6a4f",licenses:["폐기물 처리업 허가 (폐타이어 재활용)","에너지 회수시설 설치 허가","대기배출시설 설치 허가","배출시설 설치 허가"],facilities:["열분해 반응로 (회전식 킬른) 3기","열분해가스 응축·정제 시스템 1식","카본블랙 분리·분쇄·분급 설비 1식","철심(스틸와이어) 선별·압축기 1식","열분해유 저장 탱크 (100kL) 2기"],certifications:["ISO 14001 환경경영시스템","산업부 에너지기술 개발 유망기업","환경부 폐타이어 열분해유 품질 인증"],features:["한국타이어·금호타이어 등 OEM 공급 업체 폐타이어 원료 계약","열분해유(TDO) 연간 약 3,000kL 생산, 산업용 연료유 판매","카본블랙 회수율 35% 이상, 타이어 제조업체 재공급 연구 진행","스틸와이어 부산물 100% 고철 재활용으로 폐기물 제로화","열분해유의 SAF(지속가능항공유) 원료 전환 R&D 협력 진행 중"],reason_for_sale:"공동 창업주 간 지분 정리 및 개인 사업 전환 목적.",description:"(주)아산열분해에너지는 2012년 설립되어 충남 아산 테크노밸리를 거점으로 폐타이어 열분해 처리 및 열분해유·카본블랙 생산을 전문으로 하는 기업입니다. 회전식 킬른 방식의 열분해 반응로 3기를 보유하여 일 최대 25톤의 폐타이어를 처리하며, SAF 원료 활용 R&D가 진행 중입니다.",financial_summary:"2023년 연매출 36억원, 영업이익 6.8억원(이익률 18.9%). 3개년 평균 매출 성장률 14.7%, 추가 반응로 1기 증설 시 매출이 30% 이상 증가 전망입니다.",location_advantage:"충남 아산 테크노밸리는 삼성디스플레이·현대차 아산공장 인근으로 산업용 에너지 수요처가 밀집해 있습니다. 당진-대전고속도로·서해안고속도로 인접으로 광역 물류망이 우수합니다."},
+  {id:7,name:"(주)이천이-웨이스트",badge:"E-WASTE",badge_color:"#0077b6",location:"경기 이천시",address:"경기도 이천시 마장면 이천산업단지로 253",business_type:"폐전자제품(E-waste) 해체·선별·귀금속 회수업",business_category:"재활용업",established_year:2010,employees:52,annual_revenue:"67억원",operating_profit:"10.3억원",net_profit:"7.6억원",ebitda:"13.8억원",license_capacity:"일 최대 10톤",asking_price:"78~92억원",price_note:"토지·건물·시설 일괄 (정밀설비 포함 전체)",land_area:"3,400㎡",building_area:"2,050㎡",land_type:"자가 소유",status:"매각 진행중",status_color:"#f4a261",licenses:["폐가전제품 재활용업 허가 (EPR)","폐휴대폰 처리업 허가","귀금속 회수업 신고","대기배출시설 설치 허가","유해물질 취급 신고"],facilities:["자동 해체 라인 (로봇 암 포함) 1식","PCB 귀금속 회수 습식 정련 설비 1식","파쇄·선별 라인 (자력·와전류·광학) 1식","LCD·배터리 분리 전처리 설비 1식","귀금속 분석 장비 (ICP-OES) 1식"],certifications:["ISO 14001 환경경영시스템","환경부 EPR 이행 인정업체","e-Stewards 국제 E-waste 인증","K-BAT 배터리 재활용 우수업체"],features:["삼성전자·LG전자 EPR 이행 위탁처리 계약으로 원료 안정 확보","PCB 기판 귀금속(금·은·팔라듐) 회수로 고부가가치 실현","배터리 해체 전처리로 리튬·코발트 회수 연계","국제 e-Stewards 인증으로 해외 수출 E-waste 처리 수탁 가능","ICP-OES 정밀 분석으로 귀금속 회수율 업계 최고 수준"],reason_for_sale:"대주주 해외 이민 계획으로 인한 사업 매각.",description:"(주)이천이-웨이스트는 2010년 설립되어 경기 이천 산업단지에서 폐전자제품(E-waste) 해체·선별·귀금속 회수 전문 사업을 영위합니다. 삼성전자·LG전자의 EPR 이행 위탁처리 파트너로 연간 약 2,500톤을 처리합니다. PCB 기판에서 금·은·팔라듐 등 귀금속을 습식 정련으로 회수하여 고부가가치를 창출합니다.",financial_summary:"2023년 연매출 67억원, 영업이익 10.3억원(이익률 15.4%). 귀금속 가격 상승으로 2021년 대비 영업이익 38% 증가. EBITDA 13.8억원.",location_advantage:"경기 이천은 삼성전자·SK하이닉스 반도체 공장 클러스터 인접으로 고가 전자부품 폐기물 수급이 용이합니다. 영동고속도로·제2중부고속도로 접근성이 뛰어납니다."},
+  {id:8,name:"(주)광주슬러지자원화",badge:"슬러지탄화",badge_color:"#344e41",location:"광주 광산구",address:"광주광역시 광산구 평동산단 2로 116",business_type:"하수슬러지 탄화(자원화) 처리업",business_category:"자원화업",established_year:2011,employees:31,annual_revenue:"29억원",operating_profit:"5.1억원",net_profit:"3.6억원",ebitda:"8.3억원",license_capacity:"일 최대 40톤 (건량 기준)",asking_price:"38~46억원",price_note:"토지 임차, 시설·허가 일괄 (위탁계약 3년 잔여)",land_area:"2,600㎡",building_area:"1,800㎡",land_type:"임차 (장기 임대)",status:"검토 가능",status_color:"#2d6a4f",licenses:["폐기물 처리업 허가 (하수슬러지)","에너지 회수시설 설치 허가","대기배출시설 설치 허가","악취방지시설 설치 신고"],facilities:["슬러지 탈수 설비 (원심분리기) 2기","건조 설비 (간접가열 드럼 건조기) 2기","탄화로 (간접가열 회전킬른) 1기","탄화물 냉각·분급·포장 설비 1식","배가스 처리 설비 1식"],certifications:["ISO 14001 환경경영시스템","환경부 하수슬러지 에너지화 사업 지정업체","KS L 1009 탄화물 품질 기준 적합"],features:["광주광역시 공공 하수슬러지 위탁처리 계약으로 원료 안정 보장","탄화물(바이오차) 농업용 토양 개량제 특허 보유, 농가 직납","슬러지 직매립 금지 정책 기조에 따른 처리 수요 지속 증가","바이오차(Biochar) 탄소 크레딧 창출 가능성 검토 중"],reason_for_sale:"소규모 법인 단독 운영의 한계 인식, 대형 환경기업과의 합병 또는 인수 희망.",description:"(주)광주슬러지자원화는 2011년 설립되어 광주 광산구 평동산업단지를 거점으로 하수슬러지 탄화 자원화 전문 사업을 영위합니다. 광주광역시 공공 하수처리장에서 발생하는 하수슬러지를 위탁받아 탈수·건조·탄화 일관 공정으로 처리하며, 바이오차 탄소 크레딧 창출 가능성을 관련 기관과 공동 검토 중입니다.",financial_summary:"2023년 연매출 29억원, 영업이익 5.1억원(이익률 17.6%). 공공 위탁 계약 기반의 안정적 수익 구조이며 차입금 4억원으로 부채비율 28%의 건전한 재무상태입니다.",location_advantage:"광주 광산구 평동산업단지는 공공 하수처리장과의 슬러지 이송 거리가 10km 이내로 원료 수거 비용이 낮습니다. 광주제2순환도로와의 접근성이 우수합니다."},
+  {id:9,name:"(주)용인환경솔루션",badge:"지정폐기물",badge_color:"#023e8a",location:"경기 용인시",address:"경기도 용인시 처인구 모현읍 능원로 318-22",business_type:"지정폐기물 중간처리(고온소각·물리화학처리)업",business_category:"처리업",established_year:2006,employees:63,annual_revenue:"89억원",operating_profit:"15.2억원",net_profit:"11.1억원",ebitda:"21.4억원",license_capacity:"일 최대 15톤 (고온소각 기준)",asking_price:"130~160억원",price_note:"토지·건물·소각시설 일괄 (허가권 포함, 법인 전체 양도)",land_area:"5,800㎡",building_area:"3,200㎡",land_type:"자가 소유",status:"매각 진행중",status_color:"#f4a261",licenses:["지정폐기물 중간처리업 허가 (환경부)","고온소각시설 설치 허가","물리화학적 처리업 허가","폐수처리업 허가","대기배출시설 설치 허가 (1종)"],facilities:["고온 로터리 킬른 소각로 (850℃ 이상) 1기","2차 연소실 및 폐열보일러 1식","배가스 처리 설비 (SCR+백필터+세정탑) 1식","물리화학 처리 반응조 (중화·침전·응집) 6기","폐수 증발농축 설비 1식"],certifications:["ISO 14001·ISO 9001 인증","환경부 지정폐기물 처리업 우수시설 지정","소방청 위험물 취급 허가"],features:["환경부 지정폐기물 처리 허가 — 신규 취득 사실상 불가한 희소 자산","삼성·LG·SK·현대 등 대기업 협력사 장기 처리 계약 보유","고온소각+물리화학 복합 라인으로 전 유형 지정폐기물 대응","SCR·백필터·세정탑 3단 배가스 처리로 다이옥신 법정기준의 1/10","폐열보일러를 통한 스팀 생산으로 자체 에너지 비용 절감"],reason_for_sale:"재무적 투자자(PEF) 2차 펀드 청산 시한 도래 및 포트폴리오 정리.",description:"(주)용인환경솔루션은 2006년 설립되어 경기 용인 처인구에서 지정폐기물(유해폐기물) 중간처리를 전문으로 합니다. 환경부 지정폐기물 처리업 허가는 신규 취득이 사실상 불가하여 업계에서 극히 희소한 자산으로 평가받습니다. 삼성전자·LG화학·SK이노베이션·현대제철 등 대기업과 연간 장기 처리 계약을 유지하고 있습니다.",financial_summary:"2023년 연매출 89억원, 영업이익 15.2억원(이익률 17.1%). 처리 단가가 매년 5~8% 인상되고 있어 매출 성장 가시성이 높습니다. EBITDA 21.4억원.",location_advantage:"경기 용인 처인구는 삼성전자·LG화학 등 지정폐기물 다발 업체의 중간 거점입니다. 영동고속도로·용인서울고속도로 교차점으로 수도권 전역 물류가 효율적입니다."},
+  {id:10,name:"(주)울산열분해연료",badge:"열분해연료",badge_color:"#1e6091",location:"울산 울주군",address:"울산광역시 울주군 온산읍 온산공단 5길 74",business_type:"폐플라스틱 열분해 연료유(RPO) 생산업",business_category:"자원화업",established_year:2013,employees:39,annual_revenue:"48억원",operating_profit:"9.4억원",net_profit:"6.8억원",ebitda:"13.1억원",license_capacity:"일 최대 30톤",asking_price:"68~82억원",price_note:"토지·건물·시설 일괄 (특허 포함, 토지 자가)",land_area:"3,750㎡",building_area:"2,100㎡",land_type:"자가 소유",status:"매각 진행중",status_color:"#f4a261",licenses:["폐기물 처리업 허가 (폐플라스틱 재활용)","에너지 회수시설 설치 허가","대기배출시설 설치 허가 (2종)","위험물 제조소 설치 허가"],facilities:["열분해 반응로 (배치식 고온 열분해) 4기","열분해오일 분별증류 정제 설비 1식","비응축가스 연소 처리 설비 1식","RPO 저장 탱크 (200kL) 3기","전처리 파쇄·분리 설비 (PE·PP 전용) 1식"],certifications:["ISO 14001 환경경영시스템","산업부 에너지기술 개발 유망기업","환경부 폐플라스틱 연료화 우수사업장","울산시 탄소중립 선도기업"],features:["온산국가산업단지 석유화학업체에 RPO 직납으로 물류비 최소화","독자 촉매 열분해 기술 특허 2건 보유, 수율 42% 이상","분별증류 정제 설비로 경질유·중질유 분리 고가 판매","SK이노베이션·GS칼텍스 납품 MOU 체결, 원료 전환 테스트 중","EU RPO 규격(EN 17021) 대응 품질관리 체계 구축 완료"],reason_for_sale:"창업주 건강 이유로 인한 경영 은퇴. 기술 특허 및 핵심 공정 엔지니어 포함 전체 사업 양도, 기술 이전 기간 6개월 지원 가능.",description:"(주)울산열분해연료는 2013년 설립되어 울산 울주군 온산국가산업단지를 거점으로 폐플라스틱(PE·PP 중심) 열분해 연료유(RPO) 생산을 전문으로 합니다. 배치식 고온 열분해 반응로 4기와 분별증류 정제 설비를 보유하며, 독자 촉매 열분해 기술 특허 2건으로 수율 42% 이상을 달성합니다.",financial_summary:"2023년 연매출 48억원, 영업이익 9.4억원(이익률 19.6%). 3개년 평균 매출 성장률 18.3%로 RPO 수요 급증의 직접 수혜를 받고 있습니다. EBITDA 13.1억원.",location_advantage:"온산국가산업단지는 SK이노베이션·롯데케미칼·GS칼텍스 등 RPO 수요 기업이 집중되어 제품 납품 거리가 5km 이내입니다. 온산항·울산항과의 접근성도 우수합니다."}
+];
+
+// filter state
+const F = {region:'',cat:'',price:'',search:''};
+
+function parseAvgPrice(str){
+  const m = str.match(/(\d+)[~～\-](\d+)/);
+  if(m) return (parseInt(m[1])+parseInt(m[2]))/2;
+  const n = str.match(/(\d+)/);
+  return n ? parseInt(n[1]) : 0;
+}
+
+function setFilter(type, btn, val){
+  F[type] = val;
+  const group = btn.closest('.filter-row').querySelectorAll('.filter-btn');
+  group.forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const si = document.getElementById('searchInput');
+  if(si) F.search = si.value.trim();
+  applyFilters();
+}
+
+function applyFilters(){
+  const si = document.getElementById('searchInput');
+  F.search = si ? si.value.trim().toLowerCase() : '';
+  const ri = document.getElementById('regionSelect');
+  if(ri && ri.value) F.region = ri.value;
+
+  let list = COMPANIES.filter(c=>{
+    if(F.region && !c.location.includes(F.region)) return false;
+    if(F.cat && c.business_category !== F.cat) return false;
+    if(F.search && !c.name.toLowerCase().includes(F.search) && !c.location.toLowerCase().includes(F.search) && !c.business_type.toLowerCase().includes(F.search) && !c.badge.toLowerCase().includes(F.search)) return false;
+    if(F.price){
+      const p = parseAvgPrice(c.asking_price);
+      if(F.price==='under30' && p>=30) return false;
+      if(F.price==='30to60' && (p<30||p>60)) return false;
+      if(F.price==='60to100' && (p<60||p>100)) return false;
+      if(F.price==='over100' && p<100) return false;
+    }
+    return true;
+  });
+
+  const sort = document.getElementById('sortSelect')?.value || 'id';
+  if(sort==='price_asc') list.sort((a,b)=>parseAvgPrice(a.asking_price)-parseAvgPrice(b.asking_price));
+  else if(sort==='price_desc') list.sort((a,b)=>parseAvgPrice(b.asking_price)-parseAvgPrice(a.asking_price));
+  else if(sort==='revenue') list.sort((a,b)=>parseAvgPrice(b.annual_revenue)-parseAvgPrice(a.annual_revenue));
+  else list.sort((a,b)=>a.id-b.id);
+
+  renderCards(list);
+  const rc = document.getElementById('result-count');
+  if(rc) rc.textContent = `총 ${list.length}건`;
+}
+
+function renderCards(list){
+  const grid = document.getElementById('cardsGrid');
+  if(!grid) return;
+  if(!list.length){
+    grid.innerHTML = '<div class="empty-state"><div class="icon">🔍</div><p>검색 조건에 맞는 매물이 없습니다.</p><p style="margin-top:8px;font-size:.85rem">필터를 조정하거나 다른 키워드로 검색해 보세요.</p></div>';
+    return;
+  }
+  grid.innerHTML = list.map(c=>`
+    <div class="card">
+      <div class="card-bar" style="background:${c.badge_color}"></div>
+      <div class="card-body">
+        <div class="card-badges">
+          <span class="badge" style="background:${c.badge_color}">${c.badge}</span>
+          <span class="badge-status" style="background:${c.status_color}">${c.status}</span>
+        </div>
+        <h3>${c.name}</h3>
+        <div class="card-meta">📍 ${c.location}</div>
+        <div class="card-type">${c.business_category} · ${c.business_type.length>18?c.business_type.slice(0,18)+'…':c.business_type}</div>
+        <hr class="divider">
+        <div class="card-metrics">
+          <div class="metric"><div class="metric-val">${c.annual_revenue}</div><div class="metric-label">연 매출</div></div>
+          <div class="metric"><div class="metric-val">${c.license_capacity.replace('일 최대 ','')}</div><div class="metric-label">허가용량</div></div>
+          <div class="metric"><div class="metric-val">${c.employees}명</div><div class="metric-label">직원수</div></div>
+        </div>
+        <div class="card-price">
+          <div class="price-label">희망 매각가</div>
+          <div class="price-val">${c.asking_price}</div>
+          <div class="price-note">${c.price_note}</div>
+        </div>
+        <button class="card-btn" onclick="openDetailModal(${c.id})">상세 보기 →</button>
+      </div>
+    </div>`).join('');
+}
+
+function openDetailModal(id){
+  const c = COMPANIES.find(x=>x.id===id);
+  if(!c) return;
+  document.getElementById('modal-badges').innerHTML = `<span class="badge" style="background:${c.badge_color}">${c.badge}</span><span class="badge-status" style="background:${c.status_color}">${c.status}</span>`;
+  document.getElementById('modal-name').textContent = c.name;
+  document.getElementById('modal-location').textContent = '📍 '+c.location+' · '+c.business_category;
+  // tab intro
+  document.getElementById('m-desc').textContent = c.description;
+  document.getElementById('m-year').textContent = c.established_year+'년 설립 (업력 '+(2025-c.established_year)+'년)';
+  document.getElementById('m-emp').textContent = c.employees+'명';
+  document.getElementById('m-btype').textContent = c.business_type;
+  document.getElementById('m-reason').textContent = c.reason_for_sale;
+  document.getElementById('m-features').innerHTML = c.features.map(f=>`<li>${f}</li>`).join('');
+  // tab finance
+  document.getElementById('m-rev').textContent = c.annual_revenue;
+  document.getElementById('m-op').textContent = c.operating_profit;
+  document.getElementById('m-net').textContent = c.net_profit;
+  document.getElementById('m-ebitda').textContent = c.ebitda;
+  document.getElementById('m-finsummary').textContent = c.financial_summary;
+  document.getElementById('m-price').textContent = c.asking_price;
+  document.getElementById('m-price-note').textContent = c.price_note;
+  // tab facility
+  document.getElementById('m-capacity').textContent = c.license_capacity;
+  document.getElementById('m-licenses').innerHTML = c.licenses.map(l=>`<span class="tag">${l}</span>`).join('');
+  document.getElementById('m-facilities').innerHTML = c.facilities.map(f=>`<div class="facility-item">${f}</div>`).join('');
+  document.getElementById('m-certs').innerHTML = c.certifications.map(ct=>`<span class="tag">${ct}</span>`).join('');
+  document.getElementById('m-land').textContent = c.land_area;
+  document.getElementById('m-bldg').textContent = c.building_area;
+  document.getElementById('m-landtype').textContent = c.land_type;
+  // tab location
+  document.getElementById('m-address').textContent = c.address;
+  document.getElementById('m-locadv').textContent = c.location_advantage;
+  // inquire button
+  document.getElementById('inquire-btn').onclick = ()=>{ closeModal('detailModal'); openInquiryModal(c.name); };
+  switchTab('intro');
+  openModal('detailModal');
+}
+
+function switchTab(name){
+  document.querySelectorAll('.tab-btn').forEach((b,i)=>{
+    const names=['intro','finance','facility','location'];
+    b.classList.toggle('active', names[i]===name);
+  });
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  document.getElementById('tab-'+name)?.classList.add('active');
+}
+
+function openInquiryModal(companyName){
+  document.getElementById('inq-company').value = companyName || '';
+  document.getElementById('inquiryForm').reset();
+  if(companyName) document.getElementById('inq-company').value = companyName;
+  openModal('inquiryModal');
+}
+
+function submitInquiry(e){
+  e.preventDefault();
+  const name = document.getElementById('inq-name').value.trim();
+  const phone = document.getElementById('inq-phone').value.trim();
+  const agree = document.getElementById('inq-agree').checked;
+  if(!name||!phone||!agree){ alert('필수 항목을 모두 입력해 주세요.'); return; }
+  closeModal('inquiryModal');
+  setTimeout(()=>alert('✅ 문의가 접수되었습니다.\n\n담당 중개사가 24시간 이내 연락드립니다.\n에코비즈마켓을 이용해 주셔서 감사합니다.'), 200);
+}
+
+function openModal(id){ document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
+function closeModal(id){ document.getElementById(id).classList.remove('open'); document.body.style.overflow=''; }
+function handleOverlayClick(e, id){ if(e.target.id===id) closeModal(id); }
+
+document.getElementById('menuBtn').addEventListener('click',()=>{
+  document.getElementById('mobileNav').classList.toggle('open');
+});
+function closeMobileNav(){ document.getElementById('mobileNav').classList.remove('open'); }
+
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeModal('detailModal'); closeModal('inquiryModal'); }});
+
+// init
+applyFilters();
+</script>
+</body>
+</html>
