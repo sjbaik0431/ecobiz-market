@@ -57,6 +57,43 @@ nav a:hover{color:var(--primary);background:var(--light)}
 .stat-num{font-size:2rem;font-weight:900;color:var(--primary)}
 .stat-label{font-size:.85rem;color:var(--muted);margin-top:4px}
 
+/* ── OPENDATA STATS PANEL ── */
+.od-panel{background:linear-gradient(135deg,#f0faf3 0%,#fff 100%);padding:48px 24px;border-bottom:1px solid #ddeee5}
+.od-inner{max-width:1200px;margin:0 auto}
+.od-header{display:flex;align-items:center;gap:16px;margin-bottom:32px;flex-wrap:wrap}
+.od-source-badge{background:var(--primary);color:var(--white);font-size:.72rem;font-weight:700;padding:5px 12px;border-radius:20px;letter-spacing:.5px}
+.od-header h2{font-size:1.45rem;font-weight:800;color:var(--dark);margin:0}
+.od-header p{font-size:.82rem;color:var(--muted);margin:0 0 0 auto}
+.od-kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:32px}
+.od-kpi{background:var(--white);border-radius:var(--radius);padding:18px 16px;box-shadow:0 2px 12px rgba(45,106,79,.08);border-left:4px solid var(--accent)}
+.od-kpi.highlight{border-left-color:var(--primary);background:var(--dark);color:var(--white)}
+.od-kpi.highlight .od-kpi-num{color:var(--accent)}
+.od-kpi.highlight .od-kpi-label,.od-kpi.highlight .od-kpi-src{color:rgba(255,255,255,.7)}
+.od-kpi-num{font-size:1.8rem;font-weight:900;color:var(--primary);line-height:1.1}
+.od-kpi-label{font-size:.8rem;color:var(--text);font-weight:600;margin-top:4px}
+.od-kpi-src{font-size:.7rem;color:var(--muted);margin-top:4px}
+.od-breakdown{background:var(--white);border-radius:var(--radius);padding:24px;box-shadow:0 2px 12px rgba(45,106,79,.08);margin-bottom:20px}
+.od-breakdown h3{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:20px}
+.bar-rows{display:flex;flex-direction:column;gap:14px}
+.bar-row{display:grid;grid-template-columns:140px 1fr 100px;gap:12px;align-items:center}
+.bar-row-label{font-size:.82rem;font-weight:600;color:var(--text)}
+.bar-track{background:#eef5f0;border-radius:6px;height:22px;overflow:hidden}
+.bar-fill-inner{height:100%;border-radius:6px;transition:width 1s ease}
+.bar-row-val{font-size:.8rem;font-weight:700;color:var(--primary);text-align:right}
+.od-real-companies{background:var(--white);border-radius:var(--radius);padding:24px;box-shadow:0 2px 12px rgba(45,106,79,.08);margin-bottom:20px}
+.od-real-companies h3{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.od-real-companies h3 span{font-size:.72rem;background:var(--light);color:var(--primary);border-radius:10px;padding:3px 10px;font-weight:700}
+.company-chips{display:flex;flex-wrap:wrap;gap:8px}
+.company-chip{background:#f0faf3;border:1px solid #b7e4c7;border-radius:20px;padding:5px 14px;font-size:.78rem;color:var(--dark);font-weight:500}
+.company-chip.type-g{border-color:#2d6a4f;background:#d8f3dc}
+.company-chip.type-m{border-color:#40916c;background:#eaf7ef}
+.company-chip.type-f{border-color:#74c69d;background:#f0faf3}
+.company-chip.type-p{border-color:#a8dadc;background:#f0f9fa}
+.od-attr{font-size:.75rem;color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.od-attr a{color:var(--primary);text-decoration:underline}
+@media(max-width:900px){.od-kpi-grid{grid-template-columns:repeat(2,1fr)}.bar-row{grid-template-columns:100px 1fr 80px}}
+@media(max-width:480px){.od-kpi-grid{grid-template-columns:1fr 1fr}.bar-row{grid-template-columns:90px 1fr 70px}.od-kpi-num{font-size:1.4rem}}
+
 /* ── FILTERS ── */
 .filters{background:#f0faf3;border-bottom:1px solid #ddeee5;padding:20px 24px}
 .filters-inner{max-width:1200px;margin:0 auto}
@@ -172,6 +209,274 @@ footer{background:var(--dark);color:rgba(255,255,255,.8);padding:48px 24px 24px}
 .disclaimer{font-size:.75rem;opacity:.6;line-height:1.6}
 .copyright{font-size:.78rem;opacity:.5}
 
+/* ── SECTION HEADER ── */
+.sec-header{text-align:center;padding:0 24px;margin-bottom:40px}
+.sec-header h2{font-size:1.8rem;font-weight:900;color:var(--dark);margin-bottom:8px}
+.sec-header p{color:var(--muted);font-size:.95rem;max-width:640px;margin:0 auto}
+.sec-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:2px;color:var(--secondary);text-transform:uppercase;margin-bottom:8px}
+
+/* ── ABOUT ── */
+.about-section{padding:64px 24px;background:var(--white)}
+.about-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.about-content h2{font-size:1.9rem;font-weight:900;color:var(--dark);margin-bottom:16px;line-height:1.35}
+.about-content p{font-size:.95rem;color:var(--muted);line-height:1.9;margin-bottom:20px}
+.about-points{list-style:none;display:flex;flex-direction:column;gap:14px}
+.about-points li{display:flex;gap:14px;align-items:flex-start;font-size:.9rem;line-height:1.7}
+.about-points li .icon{width:36px;height:36px;border-radius:50%;background:var(--light);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem}
+.about-points li strong{color:var(--primary);font-weight:700;display:block}
+.about-cards-panel{display:flex;flex-direction:column;gap:14px}
+.about-card-sm{background:linear-gradient(135deg,#f0faf3,#fff);border:1px solid #cde8d4;border-radius:var(--radius);padding:20px;display:flex;gap:16px;align-items:center}
+.about-card-sm .num{font-size:2.2rem;font-weight:900;color:var(--accent);line-height:1;width:52px;text-align:center;flex-shrink:0}
+.about-card-sm h4{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:2px}
+.about-card-sm p{font-size:.8rem;color:var(--muted);margin:0}
+
+/* ── PROCESS ── */
+.process-section{padding:64px 24px;background:#f8fdf9}
+.process-inner{max-width:1200px;margin:0 auto}
+.process-tabs{display:flex;gap:8px;justify-content:center;margin-bottom:40px}
+.proc-tab{background:var(--white);border:2px solid #cde8d4;border-radius:10px;padding:10px 24px;font-size:.88rem;font-weight:700;color:var(--muted);cursor:pointer;transition:all .2s}
+.proc-tab.active{background:var(--primary);border-color:var(--primary);color:var(--white)}
+.proc-pane{display:none}
+.proc-pane.active{display:block}
+.proc-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;position:relative;margin-bottom:28px}
+.proc-steps::before{content:'';position:absolute;top:32px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--accent),var(--primary));z-index:0}
+.proc-step{text-align:center;position:relative;z-index:1}
+.proc-step-num{width:64px;height:64px;border-radius:50%;background:var(--primary);color:var(--white);font-size:1.2rem;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;box-shadow:0 4px 16px rgba(45,106,79,.3)}
+.proc-step-title{font-size:.85rem;font-weight:700;color:var(--dark);margin-bottom:4px}
+.proc-step-desc{font-size:.75rem;color:var(--muted);line-height:1.5}
+.proc-note{background:var(--white);border-radius:var(--radius);padding:20px 24px;border-left:4px solid var(--accent);font-size:.88rem;line-height:1.7;color:var(--text)}
+
+/* ── REGISTER ── */
+.register-section{padding:64px 24px;background:var(--white)}
+.register-inner{max-width:1000px;margin:0 auto}
+.register-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:32px}
+.reg-step{background:#f8fdf9;border-radius:var(--radius);padding:20px 16px;text-align:center;border-top:3px solid var(--accent)}
+.reg-step-num{width:40px;height:40px;border-radius:50%;background:var(--primary);color:var(--white);font-size:1rem;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+.reg-step h4{font-size:.88rem;font-weight:700;color:var(--dark);margin-bottom:6px}
+.reg-step p{font-size:.75rem;color:var(--muted);line-height:1.5}
+.doc-checklist{background:#f0faf3;border-radius:var(--radius);padding:24px;margin-bottom:32px}
+.doc-checklist h3{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:16px}
+.doc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.doc-item{display:flex;gap:8px;align-items:center;font-size:.82rem;color:var(--text);background:var(--white);border-radius:8px;padding:8px 12px}
+.doc-item::before{content:"📄";flex-shrink:0}
+.register-form-wrap{background:#f8fdf9;border-radius:var(--radius);padding:28px}
+.register-form-wrap h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:20px}
+
+/* ── DATAROOM ── */
+.dataroom-section{padding:64px 24px;background:#f8fdf9}
+.dataroom-inner{max-width:1200px;margin:0 auto}
+.dr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+.dr-card{background:var(--white);border-radius:var(--radius);padding:20px;box-shadow:0 2px 12px rgba(45,106,79,.08);display:flex;flex-direction:column;gap:12px}
+.dr-card-header{display:flex;gap:12px;align-items:flex-start}
+.dr-icon{width:44px;height:44px;border-radius:10px;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.dr-card-header h4{font-size:.9rem;font-weight:700;color:var(--dark);margin-bottom:2px}
+.dr-card-header p{font-size:.75rem;color:var(--muted)}
+.dr-meta{display:flex;gap:8px;flex-wrap:wrap}
+.dr-meta span{font-size:.72rem;background:#f0faf3;border:1px solid #cde8d4;border-radius:10px;padding:3px 10px;color:var(--dark)}
+.dr-btn{margin-top:auto;display:block;text-align:center;background:#f0faf3;border:1.5px solid var(--accent);border-radius:8px;padding:8px 16px;font-size:.8rem;font-weight:700;color:var(--primary);cursor:pointer;transition:all .2s;text-decoration:none}
+.dr-btn:hover{background:var(--light);border-color:var(--secondary)}
+.dr-stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:24px;background:var(--white);border-radius:var(--radius);box-shadow:0 2px 12px rgba(45,106,79,.08);margin-bottom:24px}
+.dr-stat{text-align:center}
+.dr-stat-num{font-size:1.5rem;font-weight:900;color:var(--primary)}
+.dr-stat-label{font-size:.75rem;color:var(--muted);margin-top:4px}
+.dr-section-label{font-size:.95rem;font-weight:800;color:var(--dark);margin:28px 0 14px;display:flex;align-items:center;gap:8px}
+.dr-section-label::after{content:'';flex:1;height:1px;background:#e0ede5}
+.dr-data-panel{background:var(--white);border-radius:var(--radius);box-shadow:0 2px 12px rgba(45,106,79,.08);overflow:hidden;margin-bottom:32px}
+.dr-data-header{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid #eef5f1}
+.dr-data-header h3{font-size:.95rem;font-weight:800;color:var(--dark);margin-bottom:3px}
+.dr-data-header p{font-size:.73rem;color:var(--muted)}
+.dr-download-btn{background:var(--primary);color:var(--white);border:none;border-radius:8px;padding:10px 18px;font-size:.82rem;font-weight:700;cursor:pointer;transition:background .2s;white-space:nowrap;flex-shrink:0}
+.dr-download-btn:hover{background:var(--secondary)}
+.dr-table-wrap{overflow-x:auto}
+.dr-data-table{width:100%;border-collapse:collapse;font-size:.82rem}
+.dr-data-table th{background:#f0faf3;color:var(--dark);font-weight:700;padding:11px 16px;text-align:right;white-space:nowrap;border-bottom:2px solid #cde8d4}
+.dr-data-table th:first-child{text-align:left}
+.dr-data-table td{padding:11px 16px;border-bottom:1px solid #f0f4f1;color:var(--text);text-align:right}
+.dr-data-table td:first-child{text-align:left;font-weight:600;color:var(--dark)}
+.dr-data-table td.num{font-variant-numeric:tabular-nums}
+.dr-data-table tr:last-child td{border-bottom:none;background:#f8fdf9;font-weight:700}
+.dr-data-table tbody tr:hover td{background:#f5fbf7}
+
+/* ── NEWSLETTER ARCHIVE (dataroom) ── */
+.dr-nl-list{display:grid;gap:10px;margin-top:14px}
+.dr-nl-item{background:var(--white);border-radius:10px;padding:14px 18px;box-shadow:0 2px 10px rgba(45,106,79,.07);display:flex;align-items:center;gap:14px}
+.dr-nl-num{width:48px;height:48px;border-radius:10px;background:var(--primary);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:900;flex-shrink:0}
+.dr-nl-info{flex:1}
+.dr-nl-title{font-size:.88rem;font-weight:700;color:var(--dark);margin-bottom:2px}
+.dr-nl-meta{font-size:.73rem;color:var(--muted)}
+.dr-nl-btn{background:#f0faf3;border:1.5px solid var(--accent);border-radius:7px;padding:7px 14px;font-size:.78rem;font-weight:700;color:var(--primary);cursor:pointer;white-space:nowrap}
+.dr-nl-btn:hover{background:var(--light)}
+.dr-nl-empty{text-align:center;padding:28px;color:var(--muted);font-size:.85rem;background:var(--white);border-radius:10px;border:1.5px dashed #cde8d4}
+
+/* ── USER LISTING BADGE (신규 접수) ── */
+.card-new-badge{display:inline-block;background:#e63946;color:#fff;font-size:.65rem;font-weight:800;border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:middle}
+
+/* ── NEWSLETTER ADMIN (admin dashboard) ── */
+.adm-nl-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.adm-nl-count{font-size:.8rem;color:rgba(255,255,255,.5)}
+.adm-nl-actions{display:flex;gap:8px}
+.adm-action-btn{background:var(--primary);color:var(--white);border:none;border-radius:8px;padding:9px 16px;font-size:.82rem;font-weight:700;cursor:pointer;transition:background .2s}
+.adm-action-btn:hover{background:var(--secondary)}
+.adm-action-btn.ghost{background:rgba(255,255,255,.1);color:var(--white)}
+.adm-action-btn.ghost:hover{background:rgba(255,255,255,.18)}
+.adm-action-btn.danger{background:rgba(231,111,81,.8)}
+.adm-nl-cards{display:grid;gap:10px;margin-bottom:20px}
+.adm-nl-card{background:#0a1219;border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:13px 16px;display:flex;align-items:center;gap:12px}
+.adm-nl-card-num{width:42px;height:42px;border-radius:8px;background:rgba(116,198,157,.15);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:900;flex-shrink:0}
+.adm-nl-card-info{flex:1;min-width:0}
+.adm-nl-card-title{font-size:.85rem;font-weight:700;color:var(--white);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.adm-nl-card-meta{font-size:.72rem;color:rgba(255,255,255,.4)}
+.adm-nl-card-btns{display:flex;gap:6px;flex-shrink:0}
+.adm-nl-card-btns button{border:none;border-radius:6px;padding:5px 10px;font-size:.72rem;font-weight:700;cursor:pointer}
+.btn-preview{background:rgba(116,198,157,.2);color:#74c69d}
+.btn-approve{background:rgba(45,106,79,.8);color:#fff}
+.btn-send{background:rgba(52,78,65,.8);color:#74c69d}
+.nl-status-draft{background:rgba(255,193,7,.15);color:#ffc107;border-radius:4px;padding:2px 7px;font-size:.68rem;font-weight:700}
+.nl-status-pub{background:rgba(116,198,157,.15);color:#74c69d;border-radius:4px;padding:2px 7px;font-size:.68rem;font-weight:700}
+
+/* Newsletter editor */
+.adm-nl-editor{background:#0a1219;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:20px;margin-top:4px}
+.adm-nl-editor h3{font-size:.92rem;font-weight:800;color:var(--white);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.08)}
+.adm-nl-form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.adm-nl-label{font-size:.73rem;color:rgba(255,255,255,.5);display:block;margin-bottom:4px;font-weight:600}
+.adm-nl-input{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:var(--white);border-radius:6px;padding:8px 10px;font-size:.82rem}
+.adm-nl-textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:var(--white);border-radius:6px;padding:8px 10px;font-size:.8rem;resize:vertical;min-height:100px;font-family:inherit}
+.adm-nl-sections{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.adm-nl-sec{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:12px}
+.adm-nl-sec h4{font-size:.78rem;font-weight:700;color:var(--accent);margin-bottom:8px}
+.adm-nl-editor-actions{display:flex;gap:8px;justify-content:flex-end;padding-top:12px;border-top:1px solid rgba(255,255,255,.08)}
+
+/* Subscriber section in admin */
+.adm-sub-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.adm-sub-count{font-size:.82rem;color:var(--accent);font-weight:700}
+.adm-sub-table{width:100%;border-collapse:collapse;font-size:.8rem}
+.adm-sub-table th{background:rgba(116,198,157,.1);color:var(--accent);padding:8px 12px;text-align:left;font-weight:700}
+.adm-sub-table td{padding:8px 12px;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.8)}
+
+/* Newsletter viewer */
+.nl-viewer{display:none;position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:3000;overflow-y:auto;padding:20px}
+.nl-viewer.open{display:block}
+.nl-viewer-wrap{max-width:780px;margin:0 auto;background:#f4f4f4;border-radius:12px;overflow:hidden}
+.nl-viewer-ctrl{background:#1b4332;display:flex;align-items:center;gap:8px;padding:10px 16px}
+.nl-viewer-ctrl span{color:rgba(255,255,255,.7);font-size:.8rem;flex:1}
+.nl-viewer-ctrl button{background:rgba(255,255,255,.15);color:#fff;border:none;border-radius:6px;padding:6px 13px;font-size:.78rem;font-weight:700;cursor:pointer}
+.nl-viewer-ctrl .approve-btn{background:var(--primary)}
+.nl-viewer-content{padding:0}
+
+/* ── AUTH MODAL ── */
+.auth-panel{background:var(--white);border-radius:16px;width:100%;max-width:480px;margin:auto}
+.auth-header{padding:28px 28px 0;text-align:center}
+.auth-header h3{font-size:1.25rem;font-weight:900;color:var(--dark);margin-bottom:4px}
+.auth-header p{font-size:.83rem;color:var(--muted);margin-bottom:24px}
+.auth-tabs{display:flex;border-bottom:2px solid #eef5f1;margin:0 28px}
+.auth-tab{flex:1;padding:12px;background:none;border:none;font-size:.9rem;font-weight:600;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-2px;cursor:pointer;transition:all .2s}
+.auth-tab.active{color:var(--primary);border-bottom-color:var(--primary)}
+.auth-body{padding:24px 28px 28px}
+.role-select{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px}
+.role-btn{background:#f8fdf9;border:2px solid #dde8e0;border-radius:10px;padding:14px 8px;text-align:center;cursor:pointer;transition:all .2s}
+.role-btn:hover,.role-btn.selected{border-color:var(--primary);background:var(--light)}
+.role-btn .role-icon{font-size:1.5rem;margin-bottom:4px}
+.role-btn span{font-size:.75rem;font-weight:700;color:var(--text);display:block}
+
+/* ── NEWSLETTER ── */
+.nl-section{background:linear-gradient(135deg,#1b4332,#2d6a4f);padding:48px 24px;text-align:center}
+.nl-inner{max-width:560px;margin:0 auto}
+.nl-inner h3{font-size:1.4rem;font-weight:900;color:var(--white);margin-bottom:8px}
+.nl-inner p{font-size:.88rem;color:rgba(255,255,255,.8);margin-bottom:24px}
+.nl-form{display:flex;gap:8px;max-width:440px;margin:0 auto 12px}
+.nl-form input{flex:1;background:rgba(255,255,255,.95);border:none;border-radius:8px;padding:12px 16px;font-size:.9rem;font-family:var(--font);outline:none}
+.nl-form button{background:var(--accent);color:var(--dark);border:none;border-radius:8px;padding:12px 20px;font-size:.9rem;font-weight:700;white-space:nowrap;cursor:pointer;transition:background .2s}
+.nl-form button:hover{background:#52b788}
+.nl-note{font-size:.72rem;color:rgba(255,255,255,.55)}
+
+/* ── TOAST ── */
+.toast-wrap{position:fixed;bottom:28px;right:28px;z-index:9999;display:flex;flex-direction:column;gap:10px;pointer-events:none}
+.toast{background:var(--dark);color:var(--white);padding:14px 18px 14px 14px;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.25);font-size:.88rem;max-width:360px;display:flex;align-items:flex-start;gap:12px;pointer-events:auto;transform:translateX(120%);opacity:0;transition:all .35s cubic-bezier(.4,0,.2,1)}
+.toast.show{transform:translateX(0);opacity:1}
+.toast-icon{font-size:1.2rem;flex-shrink:0;margin-top:1px}
+.toast-content strong{display:block;margin-bottom:2px;font-size:.9rem}
+.toast-content span{font-size:.8rem;opacity:.8;line-height:1.4}
+.toast-close{margin-left:auto;flex-shrink:0;background:none;border:none;color:rgba(255,255,255,.5);font-size:1rem;cursor:pointer;padding:0 0 0 8px;line-height:1}
+.toast-close:hover{color:var(--white)}
+.toast.t-success{border-left:4px solid var(--accent)}
+.toast.t-info{border-left:4px solid #74c2d8}
+.toast.t-warn{border-left:4px solid var(--warn)}
+.toast.t-error{border-left:4px solid var(--danger)}
+
+/* ── ADMIN DASHBOARD ── */
+.admin-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:2000;overflow-y:auto}
+.admin-overlay.open{display:flex;flex-direction:column}
+.admin-panel{background:#0f1923;color:var(--white);min-height:100vh;display:flex;flex-direction:column;width:100%}
+.admin-bar{display:flex;align-items:center;gap:16px;padding:16px 24px;background:#0a1219;border-bottom:1px solid rgba(255,255,255,.08)}
+.admin-bar .logo-small{font-size:1rem;font-weight:900;color:var(--accent)}
+.admin-bar h1{font-size:1rem;font-weight:700;color:var(--white)}
+.admin-bar .badge-admin{background:#e63946;color:var(--white);font-size:.7rem;font-weight:700;padding:3px 8px;border-radius:6px;letter-spacing:.5px}
+.admin-close{margin-left:auto;background:rgba(255,255,255,.1);border:none;color:var(--white);padding:8px 16px;border-radius:8px;font-size:.82rem;cursor:pointer;transition:background .2s}
+.admin-close:hover{background:rgba(255,255,255,.2)}
+.admin-body{flex:1;padding:24px;max-width:1300px;width:100%;margin:0 auto}
+.admin-tabs{display:flex;gap:4px;margin-bottom:28px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:0}
+.adm-tab{padding:12px 20px;background:none;border:none;color:rgba(255,255,255,.5);font-size:.88rem;font-weight:600;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px;transition:all .2s}
+.adm-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.adm-tab:hover{color:var(--white)}
+.adm-pane{display:none}
+.adm-pane.active{display:block}
+.adm-kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
+.adm-kpi{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:20px}
+.adm-kpi .num{font-size:2.2rem;font-weight:900;color:var(--accent);line-height:1}
+.adm-kpi .label{font-size:.8rem;color:rgba(255,255,255,.6);margin-top:4px}
+.adm-kpi .sub{font-size:.75rem;color:rgba(255,255,255,.35);margin-top:2px}
+.adm-section{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:20px;margin-bottom:20px}
+.adm-section h3{font-size:.88rem;font-weight:700;color:rgba(255,255,255,.7);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.adm-section h3 .count-badge{background:var(--primary);color:var(--white);font-size:.7rem;padding:2px 8px;border-radius:10px}
+.adm-table{width:100%;border-collapse:collapse;font-size:.82rem}
+.adm-table th{color:rgba(255,255,255,.45);font-weight:700;font-size:.72rem;letter-spacing:.5px;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,.08);text-align:left}
+.adm-table td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.85);vertical-align:top}
+.adm-table tr:last-child td{border:none}
+.adm-table tr:hover td{background:rgba(255,255,255,.03)}
+.adm-empty{text-align:center;padding:40px;color:rgba(255,255,255,.3);font-size:.85rem}
+.adm-role-chip{display:inline-block;padding:3px 10px;border-radius:8px;font-size:.72rem;font-weight:700}
+.adm-role-chip.buyer{background:rgba(116,194,157,.15);color:#74c69d}
+.adm-role-chip.seller{background:rgba(244,162,97,.15);color:#f4a261}
+.adm-role-chip.broker{background:rgba(0,119,182,.15);color:#74c2d8}
+.adm-type-chip{display:inline-block;padding:3px 10px;border-radius:8px;font-size:.72rem;font-weight:700}
+.adm-type-chip.buy{background:rgba(116,194,157,.15);color:#74c69d}
+.adm-type-chip.sell{background:rgba(244,162,97,.15);color:#f4a261}
+.adm-type-chip.other{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7)}
+.adm-bar-chart{display:flex;flex-direction:column;gap:10px}
+.adm-bar-row{display:grid;grid-template-columns:110px 1fr 48px;gap:10px;align-items:center;font-size:.8rem}
+.adm-bar-label{color:rgba(255,255,255,.7)}
+.adm-bar-track{background:rgba(255,255,255,.08);border-radius:4px;height:16px;overflow:hidden}
+.adm-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--secondary),var(--accent));transition:width .8s ease}
+.adm-bar-val{color:var(--accent);font-weight:700;text-align:right}
+.adm-login-box{max-width:360px;margin:80px auto;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:32px}
+.adm-login-box h2{font-size:1.1rem;font-weight:900;color:var(--white);text-align:center;margin-bottom:24px}
+.adm-login-box input{width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:12px 14px;font-size:.9rem;color:var(--white);font-family:var(--font);outline:none;margin-bottom:12px}
+.adm-login-box input::placeholder{color:rgba(255,255,255,.35)}
+.adm-login-box button{width:100%;background:var(--primary);color:var(--white);border:none;border-radius:8px;padding:12px;font-size:.92rem;font-weight:700;cursor:pointer;transition:background .2s}
+.adm-login-box button:hover{background:var(--dark)}
+.adm-login-err{color:#e63946;font-size:.8rem;text-align:center;margin-top:10px;min-height:20px}
+
+/* ── SAMPLE NOTICE ── */
+.sample-notice{max-width:1200px;margin:0 auto;padding:12px 24px}
+.sample-banner{background:#fff9e6;border:1.5px solid #f4c642;border-radius:10px;padding:12px 18px;font-size:.83rem;color:#7a5c00;display:flex;gap:10px;align-items:center}
+
+/* ── RESPONSIVE ADDITIONS ── */
+@media(max-width:900px){
+  .about-grid{grid-template-columns:1fr}
+  .proc-steps{grid-template-columns:1fr 1fr}
+  .proc-steps::before{display:none}
+  .register-flow{grid-template-columns:1fr 1fr}
+  .dr-grid{grid-template-columns:1fr 1fr}
+  .dr-stats-row{grid-template-columns:1fr 1fr}
+  .doc-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .register-flow{grid-template-columns:1fr}
+  .dr-grid{grid-template-columns:1fr}
+  .nl-form{flex-direction:column}
+  .proc-steps{grid-template-columns:1fr}
+}
+
 /* ── RESPONSIVE ── */
 @media(max-width:1024px){
   .cards-grid{grid-template-columns:repeat(2,1fr)}
@@ -224,19 +529,22 @@ footer{background:var(--dark);color:rgba(255,255,255,.8);padding:48px 24px 24px}
     </a>
     <nav>
       <a href="#listings">매물 목록</a>
-      <a href="#about">중개 서비스</a>
+      <a href="#about">서비스 소개</a>
       <a href="#process">거래 안내</a>
-      <a href="#contact">회사 소개</a>
+      <a href="#register">매물 등록</a>
+      <a href="#dataroom">자료실</a>
     </nav>
-    <button class="header-cta" onclick="openInquiryModal('')">매물 등록 문의</button>
+    <button class="header-cta" id="headerAuthBtn" onclick="openModal('authModal')">로그인 / 회원가입</button>
     <button class="menu-btn" id="menuBtn" aria-label="메뉴">☰</button>
   </div>
   <div class="mobile-nav" id="mobileNav">
     <a href="#listings" onclick="closeMobileNav()">매물 목록</a>
-    <a href="#about" onclick="closeMobileNav()">중개 서비스</a>
+    <a href="#about" onclick="closeMobileNav()">서비스 소개</a>
     <a href="#process" onclick="closeMobileNav()">거래 안내</a>
-    <a href="#contact" onclick="closeMobileNav()">회사 소개</a>
-    <a href="#" onclick="openInquiryModal('');closeMobileNav()">매물 등록 문의</a>
+    <a href="#register" onclick="closeMobileNav()">매물 등록</a>
+    <a href="#dataroom" onclick="closeMobileNav()">자료실</a>
+    <a href="#" onclick="openInquiryModal('');closeMobileNav()">중개 문의</a>
+    <a href="#" id="mobileAuthBtn" onclick="openModal('authModal');closeMobileNav()">로그인 / 회원가입</a>
   </div>
 </header>
 
@@ -255,7 +563,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.8);padding:48px 24px 24px}
       <option value="부산">부산</option>
       <option value="충청">충청</option>
       <option value="전라">전라/광주</option>
-      <option value="경상">경상</option>
+      <option value="경상">경상/경북</option>
       <option value="울산">울산</option>
     </select>
     <button onclick="applyFilters()">검색</button>
@@ -273,19 +581,381 @@ footer{background:var(--dark);color:rgba(255,255,255,.8);padding:48px 24px 24px}
   <div class="stats-inner">
     <div class="stat-card">
       <div class="stat-num" id="sNum1">10</div>
-      <div class="stat-label">전국 매물 (건)</div>
+      <div class="stat-label">현재 매물 (건)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num">47</div>
-      <div class="stat-label">성공 중개 (건)</div>
+      <div class="stat-num">13,640</div>
+      <div class="stat-label">전국 재활용업 가동업체</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num">10</div>
-      <div class="stat-label">등록 기업</div>
+      <div class="stat-num">8,050만</div>
+      <div class="stat-label">연간 재활용 처리량 (톤)</div>
     </div>
     <div class="stat-card">
-      <div class="stat-num">8</div>
-      <div class="stat-label">전문 중개사</div>
+      <div class="stat-num">773</div>
+      <div class="stat-label">경북 종합재활용업체</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── OPENDATA STATS PANEL ── -->
+<section class="od-panel" id="data-stats">
+  <div class="od-inner">
+    <div class="od-header">
+      <span class="od-source-badge">📊 공공데이터포털 기반</span>
+      <h2>자원순환기업 산업 현황</h2>
+      <p>한국환경공단 · 경상북도 공공데이터 (2024년 기준)</p>
+    </div>
+
+    <div class="od-kpi-grid">
+      <div class="od-kpi highlight">
+        <div class="od-kpi-num">13,640</div>
+        <div class="od-kpi-label">전국 재활용업 가동업체</div>
+        <div class="od-kpi-src">출처: 한국환경공단 폐기물 재활용실적 및 업체현황</div>
+      </div>
+      <div class="od-kpi">
+        <div class="od-kpi-num">8,050만</div>
+        <div class="od-kpi-label">연간 재활용 처리량 (톤/년)</div>
+        <div class="od-kpi-src">출처: 한국환경공단</div>
+      </div>
+      <div class="od-kpi">
+        <div class="od-kpi-num">9,737만</div>
+        <div class="od-kpi-label">재활용제품 연간 판매량 (톤/년)</div>
+        <div class="od-kpi-src">출처: 한국환경공단</div>
+      </div>
+      <div class="od-kpi">
+        <div class="od-kpi-num">773</div>
+        <div class="od-kpi-label">경상북도 종합재활용업 허가업체</div>
+        <div class="od-kpi-src">출처: 경상북도 공공데이터 (2026.07)</div>
+      </div>
+    </div>
+
+    <div class="od-breakdown">
+      <h3>전국 재활용업체 폐기물 종류별 현황 (총 13,640개)</h3>
+      <div class="bar-rows">
+        <div class="bar-row">
+          <span class="bar-row-label">사업장일반폐기물</span>
+          <div class="bar-track"><div class="bar-fill-inner" style="width:82.1%;background:#2d6a4f"></div></div>
+          <span class="bar-row-val">11,196개 (82.1%)</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-row-label">지정폐기물</span>
+          <div class="bar-track"><div class="bar-fill-inner" style="width:12.3%;background:#40916c"></div></div>
+          <span class="bar-row-val">1,682개 (12.3%)</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-row-label">생활폐기물</span>
+          <div class="bar-track"><div class="bar-fill-inner" style="width:5.6%;background:#74c69d"></div></div>
+          <span class="bar-row-val">762개 (5.6%)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="od-real-companies">
+      <h3>공공데이터 허가업체 실제 목록 (경상북도, 일부 발췌) <span>data.go.kr 수집</span></h3>
+      <div style="font-size:.78rem;color:var(--muted);margin-bottom:12px">허가 유형별 색상 — <span style="background:#d8f3dc;border:1px solid #2d6a4f;border-radius:10px;padding:2px 8px">종합재활용업</span> <span style="background:#eaf7ef;border:1px solid #40916c;border-radius:10px;padding:2px 8px">중간재활용업</span> <span style="background:#f0faf3;border:1px solid #74c69d;border-radius:10px;padding:2px 8px">최종재활용업</span> <span style="background:#f0f9fa;border:1px solid #a8dadc;border-radius:10px;padding:2px 8px">최종처리업</span></div>
+      <div class="company-chips">
+        <span class="company-chip type-g">㈜에어릭스 (포항)</span>
+        <span class="company-chip type-g">홍천산업㈜ (포항)</span>
+        <span class="company-chip type-g">한일시멘트㈜포항공장</span>
+        <span class="company-chip type-g">㈜포스코퓨처엠 신내화재료사업부</span>
+        <span class="company-chip type-g">태경산업㈜포항2공장</span>
+        <span class="company-chip type-g">렘코㈜ (포항)</span>
+        <span class="company-chip type-g">거성산업㈜ (포항)</span>
+        <span class="company-chip type-g">㈜세기 (포항)</span>
+        <span class="company-chip type-g">㈜에스피네이처</span>
+        <span class="company-chip type-g">천세철강㈜ (포항)</span>
+        <span class="company-chip type-m">유창산업 (포항)</span>
+        <span class="company-chip type-m">㈜원진환경 (포항)</span>
+        <span class="company-chip type-m">㈜삼호환경 (포항)</span>
+        <span class="company-chip type-m">㈜동해환경개발 (포항)</span>
+        <span class="company-chip type-m">㈜태광 (포항)</span>
+        <span class="company-chip type-m">에코그린 (포항)</span>
+        <span class="company-chip type-m">㈜가람환경산업 (포항)</span>
+        <span class="company-chip type-f">㈜경흥아이앤씨 (포항)</span>
+        <span class="company-chip type-f">㈜씨엔티 (포항)</span>
+        <span class="company-chip type-f">㈜에스엠소재 (포항)</span>
+        <span class="company-chip type-f">대양알앤텍 (포항)</span>
+        <span class="company-chip type-f">대한자원 (포항)</span>
+        <span class="company-chip type-p">㈜세미코 (김천)</span>
+        <span class="company-chip type-p">㈜성웅 (안동)</span>
+        <span class="company-chip type-p">㈜동국세라믹 (상주)</span>
+        <span class="company-chip type-p">쌍용양회공업㈜ 문경공장</span>
+        <span class="company-chip type-p">성경산업 (경산)</span>
+        <span class="company-chip type-p">㈜대풍수지 (칠곡)</span>
+      </div>
+    </div>
+
+    <div class="od-attr">
+      <span>📌 데이터 출처:</span>
+      <a href="https://www.data.go.kr" target="_blank" rel="noopener">공공데이터포털 (data.go.kr)</a>
+      <span>·</span>
+      <span>한국환경공단_폐기물 재활용실적 및 업체현황</span>
+      <span>·</span>
+      <span>경상북도_폐기물 종합·중간·최종재활용업 및 최종처리업 현황</span>
+      <span>·</span>
+      <span>수집일: 2026년 7월 16일</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="about-section" id="about">
+  <div class="about-grid">
+    <div class="about-content">
+      <div class="sec-eyebrow">서비스 소개</div>
+      <h2>자원순환기업 M&amp;A,<br>에코비즈마켓이 처음입니다</h2>
+      <p>에코비즈마켓은 폐기물처리업·재활용업·자원화업 전문 기업을 대상으로 하는 국내 최초의 M&amp;A 전문 중개 플랫폼입니다. 일반 M&amp;A 중개사가 간과하기 쉬운 환경 인허가, 처리 용량, 시설 검증을 전담 중개팀이 직접 확인합니다.</p>
+      <ul class="about-points">
+        <li><div class="icon">🔍</div><div><strong>허가·시설 전문 검증</strong>환경부·지자체 폐기물 처리업 허가 원본 확인, 처리 용량 현장 점검</div></li>
+        <li><div class="icon">🛡️</div><div><strong>안전 중개 시스템</strong>판매자·매수자 간 직접 연락 차단, 모든 정보는 중개팀을 통해서만 공유</div></li>
+        <li><div class="icon">📊</div><div><strong>공공데이터 기반 시장 정보</strong>환경공단·행정부처 공개 데이터 기반 업계 현황·밸류에이션 자료 제공</div></li>
+        <li><div class="icon">🤝</div><div><strong>무료 초기 상담</strong>매수·매도 목적과 무관하게 초기 상담 무료, 수수료는 거래 성사 후 발생</div></li>
+      </ul>
+    </div>
+    <div class="about-cards-panel">
+      <div class="about-card-sm"><div class="num">10+</div><div><h4>현재 매물</h4><p>폐기물처리·재활용·자원화 전 분야</p></div></div>
+      <div class="about-card-sm"><div class="num">∞</div><div><h4>무료 상담</h4><p>매수·매도 여부와 무관하게 무료 제공</p></div></div>
+      <div class="about-card-sm"><div class="num">24h</div><div><h4>응답 보장</h4><p>문의 접수 후 24시간 이내 담당자 연락</p></div></div>
+      <div class="about-card-sm"><div class="num">0원</div><div><h4>중개 착수금</h4><p>거래 성사 이전 착수금·수수료 없음</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS ── -->
+<section class="process-section" id="process">
+  <div class="process-inner">
+    <div class="sec-header">
+      <div class="sec-eyebrow">거래 안내</div>
+      <h2>에코비즈마켓 중개 절차</h2>
+      <p>매수자와 매도자 모두 전담 중개팀과 함께 안전하게 거래합니다</p>
+    </div>
+    <div class="process-tabs">
+      <button class="proc-tab active" onclick="switchProcTab('buy',this)">매수자 프로세스</button>
+      <button class="proc-tab" onclick="switchProcTab('sell',this)">매도자 프로세스</button>
+    </div>
+    <div class="proc-pane active" id="proc-buy">
+      <div class="proc-steps">
+        <div class="proc-step"><div class="proc-step-num">1</div><div class="proc-step-title">매물 탐색</div><div class="proc-step-desc">지역·업종·가격 필터로 원하는 매물 검색 및 상세 정보 열람</div></div>
+        <div class="proc-step"><div class="proc-step-num">2</div><div class="proc-step-title">중개 문의</div><div class="proc-step-desc">관심 매물 및 인수 목적·예산을 중개팀에 제출</div></div>
+        <div class="proc-step"><div class="proc-step-num">3</div><div class="proc-step-title">NDA 체결</div><div class="proc-step-desc">비밀유지협약 체결 후 상세 재무·시설 자료 제공</div></div>
+        <div class="proc-step"><div class="proc-step-num">4</div><div class="proc-step-title">현장 실사</div><div class="proc-step-desc">중개팀 동행 하에 현장 방문 및 시설·서류 확인</div></div>
+        <div class="proc-step"><div class="proc-step-num">5</div><div class="proc-step-title">거래 완료</div><div class="proc-step-desc">가격·조건 협의 → MOU → 본 계약 → 클로징</div></div>
+      </div>
+      <div class="proc-note">📌 <strong>매수자 유의사항:</strong> 모든 문의는 에코비즈마켓 중개팀을 통해서만 진행됩니다. 판매자와의 직접 접촉 시도 시 서비스 이용이 제한될 수 있습니다. NDA 체결 전에는 기업명·소재지 이외의 정보가 공개되지 않습니다.</div>
+    </div>
+    <div class="proc-pane" id="proc-sell">
+      <div class="proc-steps">
+        <div class="proc-step"><div class="proc-step-num">1</div><div class="proc-step-title">매도 등록 신청</div><div class="proc-step-desc">등록 양식 작성 또는 전화·이메일로 매도 의향 접수</div></div>
+        <div class="proc-step"><div class="proc-step-num">2</div><div class="proc-step-title">기업 검증 실사</div><div class="proc-step-desc">허가증·재무제표·시설 현황 확인, 게재 여부 결정</div></div>
+        <div class="proc-step"><div class="proc-step-num">3</div><div class="proc-step-title">매물 정보 등재</div><div class="proc-step-desc">익명화된 정보로 플랫폼에 등재 (기업명 비공개 설정 가능)</div></div>
+        <div class="proc-step"><div class="proc-step-num">4</div><div class="proc-step-title">매수 후보 매칭</div><div class="proc-step-desc">NDA 체결 조건부로 적격 매수자에게 상세 정보 전달</div></div>
+        <div class="proc-step"><div class="proc-step-num">5</div><div class="proc-step-title">거래 완료</div><div class="proc-step-desc">조건 협의 → MOU → 법적 실사(DD) → 본 계약 체결</div></div>
+      </div>
+      <div class="proc-note">📌 <strong>매도자 유의사항:</strong> 매물 등재 수수료는 없으며, 중개 수수료는 거래 성사 시에만 발생합니다. 기업명·대표자명은 익명 처리하거나 승인된 매수 후보에게만 공개합니다. 매도 의사는 언제든지 철회 가능합니다.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── REGISTER ── -->
+<section class="register-section" id="register">
+  <div class="register-inner">
+    <div class="sec-header">
+      <div class="sec-eyebrow">매물 등록</div>
+      <h2>매물 등록 방법</h2>
+      <p>4단계 간단한 과정으로 기업을 안전하게 매물로 등록하세요</p>
+    </div>
+    <div class="register-flow">
+      <div class="reg-step"><div class="reg-step-num">1</div><h4>등록 신청</h4><p>아래 양식 작성 또는 전화·이메일로 매도 의향 접수</p></div>
+      <div class="reg-step"><div class="reg-step-num">2</div><h4>서류 제출</h4><p>폐기물 처리업 허가증, 최근 3년 재무제표 등 기본 서류 제출</p></div>
+      <div class="reg-step"><div class="reg-step-num">3</div><h4>검증 실사</h4><p>중개팀 현장 방문 및 허가·시설 현황 확인 (무료)</p></div>
+      <div class="reg-step"><div class="reg-step-num">4</div><h4>플랫폼 등재</h4><p>익명화된 정보로 에코비즈마켓에 게재 시작</p></div>
+    </div>
+    <div class="doc-checklist">
+      <h3>📋 등록 시 필요 서류 (기본 목록)</h3>
+      <div class="doc-grid">
+        <div class="doc-item">폐기물 처리업 허가증 (원본 사본)</div>
+        <div class="doc-item">최근 3개년 재무제표 (감사보고서)</div>
+        <div class="doc-item">사업자등록증</div>
+        <div class="doc-item">법인등기부등본 (3개월 이내)</div>
+        <div class="doc-item">토지·건물 등기부등본</div>
+        <div class="doc-item">주요 시설 목록 및 설비 현황표</div>
+        <div class="doc-item">처리 실적 증명 서류 (최근 1년)</div>
+        <div class="doc-item">주요 거래처 계약서 사본 (선택)</div>
+      </div>
+    </div>
+    <div class="register-form-wrap">
+      <h3>매도 등록 신청 양식</h3>
+      <form id="registerForm" onsubmit="submitRegister(event)">
+        <div class="form-row">
+          <div class="form-group"><label>담당자 성명 <span class="req">*</span></label><input type="text" id="reg-name" placeholder="홍길동" required></div>
+          <div class="form-group"><label>연락처 <span class="req">*</span></label><input type="tel" id="reg-phone" placeholder="010-0000-0000" required></div>
+        </div>
+        <div class="form-group"><label>이메일 <span class="req">*</span></label><input type="email" id="reg-email" placeholder="example@company.com" required></div>
+        <div class="form-group"><label>회사명 <span class="req">*</span></label><input type="text" id="reg-company" placeholder="(주)OOO" required></div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>업종 <span class="req">*</span></label>
+            <select id="reg-industry" required>
+              <option value="">선택</option>
+              <option>재활용업 (폐합성수지·금속·종이·유리 등)</option>
+              <option>처리업 (건설폐기물·지정폐기물 등)</option>
+              <option>자원화업 (바이오가스·열분해·탄화 등)</option>
+              <option>수집·운반업</option>
+              <option>기타 자원순환 관련업</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>소재 지역 <span class="req">*</span></label>
+            <select id="reg-region" required>
+              <option value="">선택</option>
+              <option>서울</option><option>경기</option><option>인천</option>
+              <option>부산</option><option>대구</option><option>광주</option>
+              <option>울산</option><option>대전</option><option>세종</option>
+              <option>강원</option><option>충북</option><option>충남</option>
+              <option>전북</option><option>전남</option><option>경북</option>
+              <option>경남</option><option>제주</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group"><label>희망 매각가 (억원, 범위)</label><input type="text" id="reg-price" placeholder="예: 50~70 (미정이면 '협의' 입력)"></div>
+        <div class="form-group"><label>기업 현황 및 특이사항 <span class="req">*</span></label><textarea id="reg-note" placeholder="허가 현황, 매각 사유, 특장점 등을 간략히 기재해 주세요..." required></textarea></div>
+        <div class="checkbox-row">
+          <input type="checkbox" id="reg-agree" required>
+          <label for="reg-agree">개인정보 수집·이용에 동의합니다. 에코비즈마켓 중개팀이 상담 목적으로 연락드릴 수 있습니다.</label>
+        </div>
+        <button type="submit" class="btn-submit">매도 등록 신청하기</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ── DATAROOM ── -->
+<section class="dataroom-section" id="dataroom">
+  <div class="dataroom-inner">
+    <div class="sec-header">
+      <div class="sec-eyebrow">공개 자료실</div>
+      <h2>전국 자원순환기업 현황 데이터</h2>
+      <p>공공데이터포털(data.go.kr) 기반 폐기물·재활용업체 통계 자료 모음</p>
+    </div>
+    <div class="dr-stats-row">
+      <div class="dr-stat"><div class="dr-stat-num">13,639</div><div class="dr-stat-label">전국 재활용업 가동업체</div></div>
+      <div class="dr-stat"><div class="dr-stat-num">3종</div><div class="dr-stat-label">폐기물 유형별 분류</div></div>
+      <div class="dr-stat"><div class="dr-stat-num">17개</div><div class="dr-stat-label">전국 광역 시·도</div></div>
+      <div class="dr-stat"><div class="dr-stat-num">연 2회</div><div class="dr-stat-label">데이터 갱신 주기</div></div>
+    </div>
+
+    <div class="dr-section-label">전국 집계 통계 (한국환경공단 공식 발표)</div>
+    <div class="dr-data-panel">
+      <div class="dr-data-header">
+        <div>
+          <h3>전국 폐기물 재활용실적 및 업체현황</h3>
+          <p>출처: 한국환경공단 · 공공데이터포털 #15105969 · 폐기물종류별 가동업체 및 처리실적</p>
+        </div>
+        <button class="dr-download-btn" onclick="downloadNationwideCSV()">⬇ CSV 다운로드</button>
+      </div>
+      <div class="dr-table-wrap">
+        <table class="dr-data-table">
+          <thead>
+            <tr>
+              <th>폐기물 종류</th>
+              <th>가동업체수 (개)</th>
+              <th>재활용폐기물량 (톤/년)</th>
+              <th>폐기물량 구성비 (%)</th>
+              <th>재활용제품 판매량 (톤/년)</th>
+              <th>판매량 구성비 (%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>사업장일반폐기물</td>
+              <td class="num">11,196</td>
+              <td class="num">71,161,583</td>
+              <td class="num">88</td>
+              <td class="num">90,124,434</td>
+              <td class="num">93</td>
+            </tr>
+            <tr>
+              <td>지정폐기물</td>
+              <td class="num">1,682</td>
+              <td class="num">5,256,547</td>
+              <td class="num">7</td>
+              <td class="num">3,811,878</td>
+              <td class="num">4</td>
+            </tr>
+            <tr>
+              <td>생활폐기물</td>
+              <td class="num">761</td>
+              <td class="num">4,083,011</td>
+              <td class="num">5</td>
+              <td class="num">3,438,579</td>
+              <td class="num">4</td>
+            </tr>
+            <tr>
+              <td>합 계</td>
+              <td class="num">13,639</td>
+              <td class="num">80,501,141</td>
+              <td class="num">100</td>
+              <td class="num">97,374,891</td>
+              <td class="num">100</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="dr-section-label">지역별 업체 현황 데이터셋 (공공데이터포털 연결) <span style="font-size:.72rem;font-weight:500;color:var(--muted);background:#fff3cd;border-radius:6px;padding:2px 8px;margin-left:8px">🔒 로그인 후 열람 가능</span></div>
+    <div class="dr-grid">
+      <div class="dr-card">
+        <div class="dr-card-header"><div class="dr-icon">♻️</div><div><h4>경상북도 종합재활용업 현황</h4><p>773개 업체 허가·소재지 목록 (2026.07)</p></div></div>
+        <div class="dr-meta"><span>경상북도</span><span>종합재활용업</span><span>773건</span></div>
+        <button class="dr-btn" onclick="openDrLink('https://www.data.go.kr/data/15063824/fileData.do')">공공데이터포털에서 보기 →</button>
+      </div>
+      <div class="dr-card">
+        <div class="dr-card-header"><div class="dr-icon">🏭</div><div><h4>경상북도 중간재활용업 현황</h4><p>업체별 허가 유형·처리 대상 물질 목록</p></div></div>
+        <div class="dr-meta"><span>경상북도</span><span>중간재활용업</span><span>업체목록</span></div>
+        <button class="dr-btn" onclick="openDrLink('https://www.data.go.kr/data/15063156/fileData.do')">공공데이터포털에서 보기 →</button>
+      </div>
+      <div class="dr-card">
+        <div class="dr-card-header"><div class="dr-icon">📦</div><div><h4>경상북도 최종재활용업 현황</h4><p>최종 재활용 허가 업체 목록</p></div></div>
+        <div class="dr-meta"><span>경상북도</span><span>최종재활용업</span><span>업체목록</span></div>
+        <button class="dr-btn" onclick="openDrLink('https://www.data.go.kr/data/15063167/fileData.do')">공공데이터포털에서 보기 →</button>
+      </div>
+      <div class="dr-card">
+        <div class="dr-card-header"><div class="dr-icon">🗑️</div><div><h4>경상북도 최종처리업 현황</h4><p>매립·소각 등 최종처리 허가 업체 목록</p></div></div>
+        <div class="dr-meta"><span>경상북도</span><span>최종처리업</span><span>업체목록</span></div>
+        <button class="dr-btn" onclick="openDrLink('https://www.data.go.kr/data/15063909/fileData.do')">공공데이터포털에서 보기 →</button>
+      </div>
+      <div class="dr-card">
+        <div class="dr-card-header"><div class="dr-icon">🌿</div><div><h4>광주광역시 폐기물재활용업체 현황</h4><p>업체명·대표자·소재지·영업대상폐기물 포함</p></div></div>
+        <div class="dr-meta"><span>광주광역시</span><span>재활용업</span><span>업체목록</span></div>
+        <button class="dr-btn" onclick="openDrLink('https://www.data.go.kr/data/15118521/fileData.do')">공공데이터포털에서 보기 →</button>
+      </div>
+      <div class="dr-card">
+        <div class="dr-card-header"><div class="dr-icon">🏗️</div><div><h4>경기도 화성시 사업장폐기물 처리업체</h4><p>수집·운반·최종처리 업체 현황 (2026.02)</p></div></div>
+        <div class="dr-meta"><span>경기도 화성시</span><span>처리업</span><span>업체목록</span></div>
+        <button class="dr-btn" onclick="openDrLink('https://www.data.go.kr/data/15119088/fileData.do')">공공데이터포털에서 보기 →</button>
+      </div>
+      <div class="dr-card">
+        <div class="dr-card-header"><div class="dr-icon">🚢</div><div><h4>부산광역시 북구 폐기물처리업 현황</h4><p>지정폐기물 제외·수집운반·처리업 목록</p></div></div>
+        <div class="dr-meta"><span>부산광역시 북구</span><span>처리업</span><span>업체목록</span></div>
+        <button class="dr-btn" onclick="openDrLink('https://www.data.go.kr/data/15118523/fileData.do')">공공데이터포털에서 보기 →</button>
+      </div>
+      <div class="dr-card">
+        <div class="dr-card-header"><div class="dr-icon">⚙️</div><div><h4>경상남도 창원시 폐기물처리업(재활용업)</h4><p>관내 5개구 폐합성수지·폐유리 등 처리업체</p></div></div>
+        <div class="dr-meta"><span>경남 창원시</span><span>재활용업</span><span>업체목록</span></div>
+        <button class="dr-btn" onclick="openDrLink('https://www.data.go.kr/data/15118524/fileData.do')">공공데이터포털에서 보기 →</button>
+      </div>
+      <div class="dr-card">
+        <div class="dr-card-header"><div class="dr-icon">📑</div><div><h4>에코비즈마켓 산업 리포트</h4><p>자원순환기업 M&amp;A 시장 동향 (2025년)</p></div></div>
+        <div class="dr-meta"><span>시장 분석</span><span>M&amp;A 동향</span><span>에코비즈마켓</span></div>
+        <button class="dr-btn" onclick="openInquiryModal('리포트 요청')">중개팀에 요청하기 →</button>
+      </div>
+    </div>
+
+    <div class="dr-section-label">뉴스레터 아카이브 <span style="font-size:.72rem;font-weight:500;color:var(--muted);background:#fff3cd;border-radius:6px;padding:2px 8px;margin-left:8px">🔒 로그인 후 열람 가능</span></div>
+    <div id="dr-nl-archive">
+      <div class="dr-nl-empty">아직 발행된 뉴스레터가 없습니다. 관리자 모드에서 뉴스레터를 작성·발행하면 여기에 표시됩니다.</div>
     </div>
   </div>
 </section>
@@ -302,6 +972,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.8);padding:48px 24px 24px}
       <button class="filter-btn" data-region="충남" onclick="setFilter('region',this,'충남')">충청</button>
       <button class="filter-btn" data-region="광주" onclick="setFilter('region',this,'광주')">전라/광주</button>
       <button class="filter-btn" data-region="울산" onclick="setFilter('region',this,'울산')">울산</button>
+      <button class="filter-btn" data-region="경북" onclick="setFilter('region',this,'경북')">경북</button>
     </div>
     <div class="filter-row">
       <span class="filter-label">업종</span>
@@ -333,6 +1004,10 @@ footer{background:var(--dark);color:rgba(255,255,255,.8);padding:48px 24px 24px}
 
 <!-- ── LISTINGS ── -->
 <section class="listings" id="listings">
+  <div class="sample-notice">
+    <div class="sample-banner">⚠️ <strong>현재 게재된 매물은 서비스 시연용 샘플 데이터입니다.</strong> 실제 기업 정보가 아니며, 에코비즈마켓 정식 오픈 시 실제 검증 매물로 교체됩니다. 매물 등록 문의 또는 중개 상담은 아래 문의 양식을 이용해 주세요.
+    </div>
+  </div>
   <div class="cards-grid" id="cardsGrid"></div>
 </section>
 
@@ -464,6 +1139,61 @@ footer{background:var(--dark);color:rgba(255,255,255,.8);padding:48px 24px 24px}
   </div>
 </div>
 
+<!-- ── AUTH MODAL ── -->
+<div class="modal-overlay" id="authModal" onclick="handleOverlayClick(event,'authModal')">
+  <div class="auth-panel">
+    <div class="auth-header">
+      <button class="modal-close" style="position:absolute;top:16px;right:16px;background:#f0f0f0;color:var(--text);width:36px;height:36px;border-radius:50%;border:none;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center" onclick="closeModal('authModal')">✕</button>
+      <h3>에코비즈마켓</h3>
+      <p>자원순환기업 M&amp;A 전문 플랫폼</p>
+    </div>
+    <div class="auth-tabs">
+      <button class="auth-tab active" onclick="switchAuthTab('login',this)">로그인</button>
+      <button class="auth-tab" onclick="switchAuthTab('signup',this)">회원가입</button>
+    </div>
+    <div class="auth-body">
+      <div id="auth-login">
+        <div class="form-group"><label>이메일</label><input type="email" id="login-email" placeholder="example@email.com"></div>
+        <div class="form-group"><label>비밀번호</label><input type="password" id="login-pw" placeholder="••••••••"></div>
+        <button class="btn-submit" onclick="doLogin()">로그인</button>
+        <p style="text-align:center;font-size:.8rem;color:var(--muted);margin-top:14px">아직 회원이 아니신가요? <a href="#" style="color:var(--primary);font-weight:700" onclick="document.querySelectorAll('.auth-tab')[1].click();return false">회원가입</a></p>
+      </div>
+      <div id="auth-signup" style="display:none">
+        <div style="font-size:.82rem;color:var(--muted);margin-bottom:14px">회원 유형을 선택해 주세요</div>
+        <div class="role-select">
+          <div class="role-btn" onclick="selectRole(this)"><div class="role-icon">🏢</div><span>매수자</span></div>
+          <div class="role-btn" onclick="selectRole(this)"><div class="role-icon">🏭</div><span>매도자</span></div>
+          <div class="role-btn" onclick="selectRole(this)"><div class="role-icon">🤝</div><span>전문중개사</span></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>이름 <span class="req">*</span></label><input type="text" id="signup-name" placeholder="홍길동"></div>
+          <div class="form-group"><label>연락처 <span class="req">*</span></label><input type="tel" id="signup-phone" placeholder="010-0000-0000"></div>
+        </div>
+        <div class="form-group"><label>이메일 <span class="req">*</span></label><input type="email" id="signup-email" placeholder="example@email.com"></div>
+        <div class="form-group"><label>비밀번호 <span class="req">*</span></label><input type="password" id="signup-pw" placeholder="8자 이상"></div>
+        <div class="checkbox-row">
+          <input type="checkbox" id="signup-agree">
+          <label for="signup-agree">이용약관 및 개인정보처리방침에 동의합니다</label>
+        </div>
+        <button class="btn-submit" onclick="doSignup()">회원가입</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── NEWSLETTER ── -->
+<section class="nl-section">
+  <div class="nl-inner">
+    <h3>자원순환 M&amp;A 뉴스레터</h3>
+    <p>신규 매물 알림, 업계 동향, 환경 규제 변화 등을 이메일로 받아보세요.<br>월 2회 발송, 언제든지 수신 취소 가능합니다.</p>
+    <form class="nl-form" onsubmit="submitNewsletter(event)">
+      <input type="email" id="nl-email" placeholder="이메일 주소 입력" required>
+      <button type="submit">구독하기</button>
+    </form>
+    <p class="nl-note">📩 구독 시 개인정보(이메일)가 뉴스레터 발송 목적으로만 이용됩니다. 수신 거부는 메일 하단 링크로 가능합니다.</p>
+  </div>
+</section>
+
 <!-- ── FOOTER ── -->
 <footer id="contact">
   <div class="footer-inner">
@@ -474,12 +1204,14 @@ footer{background:var(--dark);color:rgba(255,255,255,.8);padding:48px 24px 24px}
       </div>
       <p>자원순환기업 전문 M&amp;A 거래소<br>폐기물처리·재활용 기업의 안전하고 투명한 거래를 중개합니다.</p>
     </div>
-    <div class="footer-col" id="about">
+    <div class="footer-col">
       <h4>서비스</h4>
-      <a href="#">서비스 소개</a>
-      <a href="#" id="process">중개 절차 안내</a>
-      <a href="#">이용약관</a>
-      <a href="#">개인정보처리방침</a>
+      <a href="#about">서비스 소개</a>
+      <a href="#process">중개 절차 안내</a>
+      <a href="#register">매물 등록 방법</a>
+      <a href="#dataroom">자료실</a>
+      <a href="#" onclick="alert('이용약관 페이지 준비 중입니다.');return false">이용약관</a>
+      <a href="#" onclick="alert('개인정보처리방침 페이지 준비 중입니다.');return false">개인정보처리방침</a>
     </div>
     <div class="footer-col footer-contact">
       <h4>중개팀 연락처</h4>
@@ -491,9 +1223,190 @@ footer{background:var(--dark);color:rgba(255,255,255,.8);padding:48px 24px 24px}
   </div>
   <div class="footer-bottom">
     <p class="disclaimer">⚠️ 본 플랫폼의 모든 기업 정보는 에코비즈마켓 중개팀이 검증한 매물입니다. 판매자·매수자 간 직거래를 엄금하며, 모든 거래는 반드시 중개팀을 통해 진행되어야 합니다. 게재된 정보는 참고용이며 실제 거래 조건과 다를 수 있습니다.</p>
-    <p class="copyright">Copyright © 2025 에코비즈마켓 (EcoBiz Market). All rights reserved.</p>
+    <p style="font-size:.75rem;opacity:.5;margin-top:8px">📊 산업 통계는 <strong>공공데이터포털(data.go.kr)</strong> — 한국환경공단·경상북도 공공데이터 기반 (2024~2026년 기준). 허가업체 목록 원본: 경상북도_폐기물 종합·중간·최종재활용업 및 최종처리업 현황.</p>
+    <p class="copyright">Copyright © 2025 에코비즈마켓 (EcoBiz Market). All rights reserved. &nbsp;<a href="#" onclick="openAdmin();return false" style="opacity:.25;font-size:.7rem;color:inherit">관리자</a></p>
   </div>
 </footer>
+
+<!-- ── TOAST CONTAINER ── -->
+<div class="toast-wrap" id="toastWrap"></div>
+
+<!-- ── ADMIN DASHBOARD ── -->
+<div class="admin-overlay" id="adminOverlay">
+  <!-- Login Screen -->
+  <div class="admin-panel" id="adminLoginScreen">
+    <div class="admin-bar">
+      <span class="logo-small">♻ 에코비즈마켓</span>
+      <span class="badge-admin">ADMIN</span>
+      <button class="admin-close" onclick="closeAdmin()">✕ 닫기</button>
+    </div>
+    <div class="admin-body">
+      <div class="adm-login-box">
+        <h2>🔐 관리자 로그인</h2>
+        <input type="text" id="adm-id" placeholder="관리자 ID" onkeydown="if(event.key==='Enter')doAdminLogin()">
+        <input type="password" id="adm-pw" placeholder="비밀번호" onkeydown="if(event.key==='Enter')doAdminLogin()">
+        <button onclick="doAdminLogin()">로그인</button>
+        <div class="adm-login-err" id="adm-login-err"></div>
+      </div>
+    </div>
+  </div>
+  <!-- Dashboard Screen -->
+  <div class="admin-panel" id="adminDashScreen" style="display:none">
+    <div class="admin-bar">
+      <span class="logo-small">♻ 에코비즈마켓</span>
+      <h1>관리자 대시보드</h1>
+      <span class="badge-admin">ADMIN</span>
+      <button class="admin-close" onclick="closeAdmin()">✕ 닫기</button>
+    </div>
+    <div class="admin-body">
+      <div class="admin-tabs">
+        <button class="adm-tab active" onclick="switchAdmTab('overview',this)">📊 대시보드</button>
+        <button class="adm-tab" onclick="switchAdmTab('members',this)">👥 회원가입 현황</button>
+        <button class="adm-tab" onclick="switchAdmTab('sell',this)">🏭 매도 등록 현황</button>
+        <button class="adm-tab" onclick="switchAdmTab('buy',this)">🏢 매수 문의 현황</button>
+        <button class="adm-tab" onclick="switchAdmTab('nav',this)">📈 메뉴 이용현황</button>
+        <button class="adm-tab" onclick="switchAdmTab('newsletter',this)">📰 뉴스레터 관리</button>
+      </div>
+      <!-- 대시보드 -->
+      <div class="adm-pane active" id="adm-overview">
+        <div class="adm-kpi-grid" id="adm-kpis"></div>
+        <div class="adm-section">
+          <h3>⏱ 최근 활동 (최신 5건)</h3>
+          <table class="adm-table" id="adm-recent-table">
+            <thead><tr><th>유형</th><th>이름/회사</th><th>내용</th><th>일시</th></tr></thead>
+            <tbody id="adm-recent-body"></tbody>
+          </table>
+        </div>
+      </div>
+      <!-- 회원가입 -->
+      <div class="adm-pane" id="adm-members">
+        <div class="adm-section">
+          <h3>👥 회원가입 현황 <span class="count-badge" id="adm-member-count">0</span></h3>
+          <table class="adm-table">
+            <thead><tr><th>이름</th><th>역할</th><th>이메일</th><th>연락처</th><th>가입일시</th></tr></thead>
+            <tbody id="adm-member-body"></tbody>
+          </table>
+          <div class="adm-empty" id="adm-member-empty" style="display:none">아직 가입한 회원이 없습니다.</div>
+        </div>
+      </div>
+      <!-- 매도 등록 -->
+      <div class="adm-pane" id="adm-sell">
+        <div class="adm-section">
+          <h3>🏭 매도 등록 현황 <span class="count-badge" id="adm-sell-count">0</span></h3>
+          <table class="adm-table">
+            <thead><tr><th>담당자</th><th>회사명</th><th>업종</th><th>지역</th><th>희망가</th><th>접수일시</th></tr></thead>
+            <tbody id="adm-sell-body"></tbody>
+          </table>
+          <div class="adm-empty" id="adm-sell-empty" style="display:none">등록된 매도 신청이 없습니다.</div>
+        </div>
+      </div>
+      <!-- 매수 문의 -->
+      <div class="adm-pane" id="adm-buy">
+        <div class="adm-section">
+          <h3>🏢 매수·중개 문의 현황 <span class="count-badge" id="adm-buy-count">0</span></h3>
+          <table class="adm-table">
+            <thead><tr><th>이름</th><th>연락처</th><th>이메일</th><th>문의유형</th><th>관심기업</th><th>접수일시</th></tr></thead>
+            <tbody id="adm-buy-body"></tbody>
+          </table>
+          <div class="adm-empty" id="adm-buy-empty" style="display:none">접수된 문의가 없습니다.</div>
+        </div>
+      </div>
+      <!-- 메뉴 이용현황 -->
+      <div class="adm-pane" id="adm-nav">
+        <div class="adm-section">
+          <h3>📈 메뉴·섹션 이용 현황</h3>
+          <div class="adm-bar-chart" id="adm-nav-chart"></div>
+        </div>
+        <div class="adm-section">
+          <h3>🔢 기타 액션 통계</h3>
+          <div class="adm-bar-chart" id="adm-action-chart"></div>
+        </div>
+      </div>
+      <!-- 뉴스레터 관리 -->
+      <div class="adm-pane" id="adm-newsletter">
+        <div class="adm-section">
+          <div class="adm-nl-top">
+            <div>
+              <h3 style="margin:0 0 2px">📰 뉴스레터 발행 현황</h3>
+              <span class="adm-nl-count" id="adm-nl-count-label">총 0호 발행</span>
+            </div>
+            <div class="adm-nl-actions">
+              <button class="adm-action-btn ghost" onclick="autoGenerateNewsletter()">⚡ 자동 초안 작성</button>
+              <button class="adm-action-btn" onclick="openNlEditor()">+ 새 호 작성</button>
+            </div>
+          </div>
+          <div class="adm-nl-cards" id="adm-nl-cards">
+            <div style="opacity:.4;font-size:.83rem;padding:16px 0">발행된 뉴스레터가 없습니다. 새 호를 작성해 주세요.</div>
+          </div>
+        </div>
+        <!-- 뉴스레터 편집기 -->
+        <div class="adm-nl-editor" id="adm-nl-editor" style="display:none">
+          <h3>📝 뉴스레터 작성 / 편집</h3>
+          <input type="hidden" id="nl-edit-id">
+          <div class="adm-nl-form-row">
+            <div>
+              <label class="adm-nl-label">제호 (자동)</label>
+              <input class="adm-nl-input" id="nl-title" readonly style="opacity:.6">
+            </div>
+            <div>
+              <label class="adm-nl-label">발행 예정일</label>
+              <input class="adm-nl-input" id="nl-date" type="date">
+            </div>
+          </div>
+          <div class="adm-nl-sections">
+            <div class="adm-nl-sec">
+              <h4>🏭 신규 매물 소개</h4>
+              <textarea class="adm-nl-textarea" id="nl-s-listings" placeholder="이번 주 신규 매물 소개. 회사명·지역·가격·특징을 간략히 입력하세요.&#10;예) (주)○○환경, 경기 안산, 60~70억원&#10;폐합성수지 재활용 20년 업력, 토지 자가 보유"></textarea>
+            </div>
+            <div class="adm-nl-sec">
+              <h4>📋 업계 동향 및 정책</h4>
+              <textarea class="adm-nl-textarea" id="nl-s-policy" placeholder="환경부·지자체 정책 동향, 규제 변화 등을 입력하세요.&#10;예) 폐플라스틱 열분해유 연료 기준 강화 예고&#10;환경부, 2026 하반기 시행 예정"></textarea>
+            </div>
+            <div class="adm-nl-sec">
+              <h4>🌐 글로벌 뉴스</h4>
+              <textarea class="adm-nl-textarea" id="nl-s-global" placeholder="해외 자원순환 동향, 국제 규제 변화 등을 입력하세요.&#10;예) EU CBAM 적용 품목 확대, 일본 순환경제법 개정"></textarea>
+            </div>
+            <div class="adm-nl-sec">
+              <h4>⚖️ 관계 법령·제도 개선</h4>
+              <textarea class="adm-nl-textarea" id="nl-s-law" placeholder="폐기물관리법, 자원순환기본법 등 관련 법령 개정 동향을 입력하세요."></textarea>
+            </div>
+          </div>
+          <div class="adm-nl-editor-actions">
+            <button class="adm-action-btn ghost" onclick="closeNlEditor()">취소</button>
+            <button class="adm-action-btn ghost" onclick="saveNlDraft()">초안 저장</button>
+            <button class="adm-action-btn" onclick="previewNl()">미리보기</button>
+            <button class="adm-action-btn" style="background:#1b4332" onclick="approveAndPublishNl()">✅ 승인 · 발행</button>
+          </div>
+        </div>
+        <!-- 구독자 현황 -->
+        <div class="adm-section" style="margin-top:20px">
+          <div class="adm-sub-header">
+            <h3 style="margin:0">📧 뉴스레터 구독자 현황 <span class="adm-sub-count" id="adm-sub-count">0명</span></h3>
+            <button class="adm-action-btn ghost" onclick="sendNlEmail()" style="font-size:.75rem;padding:6px 12px">이메일 발송 준비</button>
+          </div>
+          <table class="adm-sub-table">
+            <thead><tr><th>#</th><th>이메일</th><th>신청일시</th></tr></thead>
+            <tbody id="adm-sub-body"></tbody>
+          </table>
+          <div style="opacity:.4;font-size:.8rem;display:none" id="adm-sub-empty">구독 신청자가 없습니다.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── NEWSLETTER VIEWER ── -->
+<div class="nl-viewer" id="nlViewer">
+  <div class="nl-viewer-wrap">
+    <div class="nl-viewer-ctrl">
+      <span id="nl-viewer-title">RA 뉴스레터</span>
+      <button onclick="printNl()">🖨 인쇄/PDF</button>
+      <button class="approve-btn" id="nl-viewer-approve-btn" onclick="approveCurrentNl()" style="display:none">✅ 승인 · 발행</button>
+      <button onclick="closeNlViewer()">✕ 닫기</button>
+    </div>
+    <div class="nl-viewer-content" id="nl-viewer-body"></div>
+  </div>
+</div>
 
 <script>
 const COMPANIES = [
@@ -642,35 +1555,924 @@ function switchTab(name){
 }
 
 function openInquiryModal(companyName){
-  document.getElementById('inq-company').value = companyName || '';
-  document.getElementById('inquiryForm').reset();
-  if(companyName) document.getElementById('inq-company').value = companyName;
-  openModal('inquiryModal');
+  requireLogin(()=>{
+    document.getElementById('inq-company').value = companyName || '';
+    document.getElementById('inquiryForm').reset();
+    if(companyName) document.getElementById('inq-company').value = companyName;
+    openModal('inquiryModal');
+  }, '매수·매도 문의');
 }
 
-function submitInquiry(e){
-  e.preventDefault();
-  const name = document.getElementById('inq-name').value.trim();
-  const phone = document.getElementById('inq-phone').value.trim();
-  const agree = document.getElementById('inq-agree').checked;
-  if(!name||!phone||!agree){ alert('필수 항목을 모두 입력해 주세요.'); return; }
-  closeModal('inquiryModal');
-  setTimeout(()=>alert('✅ 문의가 접수되었습니다.\n\n담당 중개사가 24시간 이내 연락드립니다.\n에코비즈마켓을 이용해 주셔서 감사합니다.'), 200);
+/* ════════════════════════════════════════
+   TOAST NOTIFICATION
+   ════════════════════════════════════════ */
+function downloadNationwideCSV(){
+  requireLogin(()=>{
+    const rows=[
+      ['폐기물종류','가동업체수(개)','재활용폐기물량(톤/년)','폐기물량구성비(%)','재활용제품판매량(톤/년)','판매량구성비(%)'],
+      ['사업장일반폐기물','11196','71161583','88','90124434','93'],
+      ['지정폐기물','1682','5256547','7','3811878','4'],
+      ['생활폐기물','761','4083011','5','3438579','4'],
+      ['합계','13639','80501141','100','97374891','100']
+    ];
+    const csv=rows.map(r=>r.join(',')).join('\r\n');
+    const blob=new Blob(['﻿'+csv],{type:'text/csv;charset=utf-8;'});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url; a.download='전국_폐기물재활용업체현황_한국환경공단.csv';
+    document.body.appendChild(a); a.click();
+    setTimeout(()=>{ URL.revokeObjectURL(url); a.remove(); },1000);
+    showToast('다운로드 완료','전국 폐기물 재활용업체 현황 CSV 파일이 저장됩니다.','success',4000);
+  }, 'CSV 다운로드');
 }
 
+function showToast(title, body, type='success', duration=4000){
+  const wrap = document.getElementById('toastWrap');
+  const t = document.createElement('div');
+  const icons = {success:'✅',info:'ℹ️',warn:'⚠️',error:'❌'};
+  t.className = `toast t-${type}`;
+  t.innerHTML = `
+    <span class="toast-icon">${icons[type]||'✅'}</span>
+    <div class="toast-content"><strong>${title}</strong><span>${body}</span></div>
+    <button class="toast-close" onclick="removeToast(this.parentElement)">✕</button>`;
+  wrap.appendChild(t);
+  requestAnimationFrame(()=>{ requestAnimationFrame(()=>{ t.classList.add('show'); }); });
+  if(duration>0) setTimeout(()=>removeToast(t), duration);
+}
+function removeToast(t){
+  t.classList.remove('show');
+  setTimeout(()=>t.remove(), 350);
+}
+
+/* ════════════════════════════════════════
+   STORAGE HELPERS
+   ════════════════════════════════════════ */
+const DB = {
+  get(k){ try{ return JSON.parse(localStorage.getItem('ebm_'+k)||'[]'); }catch(e){ return []; } },
+  set(k,v){ try{ localStorage.setItem('ebm_'+k, JSON.stringify(v)); }catch(e){} },
+  push(k,v){ const arr=DB.get(k); arr.unshift(v); DB.set(k,arr); },
+  getObj(k,def={}){ try{ return JSON.parse(localStorage.getItem('ebm_'+k)||JSON.stringify(def)); }catch(e){ return def; } },
+  setObj(k,v){ try{ localStorage.setItem('ebm_'+k, JSON.stringify(v)); }catch(e){} }
+};
+
+function nowStr(){
+  const d=new Date();
+  return `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
+}
+
+function trackNav(key){
+  const nav = DB.getObj('nav', {});
+  nav[key] = (nav[key]||0)+1;
+  DB.setObj('nav', nav);
+}
+
+function trackAction(key){
+  const act = DB.getObj('actions', {});
+  act[key] = (act[key]||0)+1;
+  DB.setObj('actions', act);
+}
+
+/* ════════════════════════════════════════
+   MODAL HELPERS
+   ════════════════════════════════════════ */
 function openModal(id){ document.getElementById(id).classList.add('open'); document.body.style.overflow='hidden'; }
 function closeModal(id){ document.getElementById(id).classList.remove('open'); document.body.style.overflow=''; }
 function handleOverlayClick(e, id){ if(e.target.id===id) closeModal(id); }
 
 document.getElementById('menuBtn').addEventListener('click',()=>{
   document.getElementById('mobileNav').classList.toggle('open');
+  trackAction('모바일메뉴 열기');
 });
 function closeMobileNav(){ document.getElementById('mobileNav').classList.remove('open'); }
 
-document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeModal('detailModal'); closeModal('inquiryModal'); }});
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeModal('detailModal'); closeModal('inquiryModal'); closeModal('authModal'); }});
+
+/* ════════════════════════════════════════
+   NAV TRACKING
+   ════════════════════════════════════════ */
+document.querySelectorAll('nav a, .mobile-nav a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    const href = a.getAttribute('href');
+    const label = a.textContent.trim();
+    if(href&&href.startsWith('#')&&href.length>1) trackNav(label);
+  });
+});
+
+/* ════════════════════════════════════════
+   PROC TABS
+   ════════════════════════════════════════ */
+function switchProcTab(name, btn){
+  document.querySelectorAll('.proc-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.proc-pane').forEach(p=>p.classList.remove('active'));
+  document.getElementById('proc-'+name)?.classList.add('active');
+  trackNav('거래안내_'+(name==='buy'?'매수':'매도'));
+}
+
+/* ════════════════════════════════════════
+   SESSION (로그인 상태 관리)
+   ════════════════════════════════════════ */
+function getSession(){
+  try{ return JSON.parse(localStorage.getItem('ebm_session')); }catch(e){ return null; }
+}
+function setSession(u){ localStorage.setItem('ebm_session', JSON.stringify(u)); }
+function clearSession(){ localStorage.removeItem('ebm_session'); }
+
+function updateAuthHeader(){
+  const u = getSession();
+  const btn = document.getElementById('headerAuthBtn');
+  const mBtn = document.getElementById('mobileAuthBtn');
+  if(u){
+    btn.textContent = `👤 ${u.name} | 로그아웃`;
+    btn.onclick = doLogout;
+    if(mBtn){ mBtn.textContent = `로그아웃 (${u.name})`; mBtn.onclick = (e)=>{ e.preventDefault(); doLogout(); closeMobileNav(); }; }
+  } else {
+    btn.textContent = '로그인 / 회원가입';
+    btn.onclick = ()=>openModal('authModal');
+    if(mBtn){ mBtn.textContent = '로그인 / 회원가입'; mBtn.onclick = (e)=>{ e.preventDefault(); openModal('authModal'); closeMobileNav(); }; }
+  }
+}
+
+function requireLogin(fn, actionName){
+  if(getSession()){ fn(); return; }
+  showToast('로그인 필요', `${actionName||'이 기능'}은 로그인 후 이용하실 수 있습니다.`, 'warn', 4500);
+  setTimeout(()=>openModal('authModal'), 600);
+}
+
+function doLogout(){
+  const u = getSession();
+  clearSession();
+  updateAuthHeader();
+  showToast('로그아웃', `${u?.name||''}님 안전하게 로그아웃되었습니다.`, 'info', 3000);
+}
+
+function openDrLink(url){
+  requireLogin(()=>window.open(url,'_blank','noopener'), '자료실 열람');
+}
+
+/* ════════════════════════════════════════
+   AUTH MODAL
+   ════════════════════════════════════════ */
+function switchAuthTab(name, btn){
+  document.querySelectorAll('.auth-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('auth-login').style.display  = name==='login' ?'block':'none';
+  document.getElementById('auth-signup').style.display = name==='signup'?'block':'none';
+}
+
+function selectRole(el){
+  document.querySelectorAll('.role-btn').forEach(b=>b.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function doLogin(){
+  const email = document.getElementById('login-email').value.trim();
+  const pw    = document.getElementById('login-pw').value;
+  if(!email){ showToast('입력 오류', '이메일을 입력해 주세요.', 'warn'); return; }
+  if(!pw)   { showToast('입력 오류', '비밀번호를 입력해 주세요.', 'warn'); return; }
+  const members = DB.get('members');
+  const user = members.find(m => m.email===email && m.pw===pw);
+  if(!user){
+    showToast('로그인 실패', '이메일 또는 비밀번호가 올바르지 않습니다.', 'error', 4000);
+    return;
+  }
+  setSession({ name: user.name, email: user.email, role: user.role });
+  closeModal('authModal');
+  updateAuthHeader();
+  trackAction('로그인');
+  setTimeout(()=>{
+    showToast('로그인 완료', `${user.name}님, 환영합니다! 자료실·문의·뉴스레터를 이용하실 수 있습니다.`, 'success', 5000);
+  }, 300);
+}
+
+function doSignup(){
+  const name  = document.getElementById('signup-name').value.trim();
+  const phone = document.getElementById('signup-phone').value.trim();
+  const email = document.getElementById('signup-email').value.trim();
+  const pw    = document.getElementById('signup-pw').value;
+  const agree = document.getElementById('signup-agree').checked;
+  const rolEl = document.querySelector('.role-btn.selected span');
+  if(!name||!phone||!email||!pw){ showToast('입력 오류', '필수 항목을 모두 입력해 주세요.', 'warn'); return; }
+  if(!agree){ showToast('약관 동의 필요', '이용약관 및 개인정보처리방침에 동의해 주세요.', 'warn'); return; }
+  const members = DB.get('members');
+  if(members.find(m=>m.email===email)){
+    showToast('이미 가입된 이메일', '해당 이메일로 이미 가입된 계정이 있습니다. 로그인해 주세요.', 'warn', 5000);
+    return;
+  }
+  const role = rolEl ? rolEl.textContent : '미선택';
+  DB.push('members', { name, role, email, phone, pw, date: nowStr() });
+  setSession({ name, email, role });
+  updateAuthHeader();
+  trackAction('회원가입');
+  closeModal('authModal');
+  document.getElementById('signup-name').value='';
+  document.getElementById('signup-phone').value='';
+  document.getElementById('signup-email').value='';
+  document.getElementById('signup-pw').value='';
+  document.getElementById('signup-agree').checked=false;
+  document.querySelectorAll('.role-btn').forEach(b=>b.classList.remove('selected'));
+  setTimeout(()=>{
+    showToast('회원가입 완료!', `${name}님, 에코비즈마켓에 오신 것을 환영합니다. 자료실·문의·뉴스레터를 이용하실 수 있습니다.`, 'success', 6000);
+  }, 300);
+  setTimeout(()=>{
+    showToast('콜백 안내', `📞 ${name}님 등록 연락처(${phone})로 담당 중개사가 익일 업무시간 내 연락드립니다.`, 'info', 8000);
+  }, 2200);
+}
+
+/* ════════════════════════════════════════
+   INQUIRY (매수 문의)
+   ════════════════════════════════════════ */
+function submitInquiry(e){
+  e.preventDefault();
+  const name    = document.getElementById('inq-name').value.trim();
+  const phone   = document.getElementById('inq-phone').value.trim();
+  const email   = document.getElementById('inq-email').value.trim();
+  const type    = document.getElementById('inq-type').value;
+  const company = document.getElementById('inq-company').value.trim();
+  const msg     = document.getElementById('inq-msg').value.trim();
+  const agree   = document.getElementById('inq-agree').checked;
+  if(!name||!phone||!email||!type||!msg){ showToast('입력 오류', '필수 항목(*)을 모두 입력해 주세요.', 'warn'); return; }
+  if(!agree){ showToast('약관 동의 필요', '개인정보 수집·이용에 동의해 주세요.', 'warn'); return; }
+  const typeLabels={buy:'매수 관심',sell:'매도 등록',valuation:'기업가치평가',other:'기타'};
+  DB.push('inquiries', { name, phone, email, type, typeLabel: typeLabels[type]||type, company, msg, date: nowStr() });
+  trackAction('매수_문의');
+  closeModal('inquiryModal');
+  e.target.reset();
+  setTimeout(()=>{
+    showToast('문의 접수 완료!', `${name}님의 ${typeLabels[type]||type} 문의가 접수되었습니다. 24시간 이내 담당 중개사가 연락드립니다.`, 'success', 6000);
+  }, 300);
+  setTimeout(()=>{
+    showToast('콜백 안내', `📞 ${name}님 연락처(${phone})로 담당 중개사가 익일 업무시간 내 연락드립니다.`, 'info', 8000);
+  }, 2400);
+}
+
+/* ════════════════════════════════════════
+   REGISTER (매도 등록)
+   ════════════════════════════════════════ */
+function submitRegister(e){
+  e.preventDefault();
+  if(!getSession()){
+    showToast('로그인 필요', '매도 등록은 로그인 후 이용하실 수 있습니다.', 'warn', 4500);
+    setTimeout(()=>openModal('authModal'), 600);
+    return;
+  }
+  const name    = document.getElementById('reg-name').value.trim();
+  const phone   = document.getElementById('reg-phone').value.trim();
+  const email   = document.getElementById('reg-email').value.trim();
+  const company = document.getElementById('reg-company').value.trim();
+  const industry= document.getElementById('reg-industry').value;
+  const region  = document.getElementById('reg-region').value;
+  const price   = document.getElementById('reg-price').value.trim();
+  const note    = document.getElementById('reg-note').value.trim();
+  DB.push('sell_regs', { name, phone, email, company, industry, region, price: price||'협의', note, date: nowStr() });
+  trackAction('매도_등록');
+  e.target.reset();
+  setTimeout(()=>{
+    showToast('매도 등록 신청 완료!', `${company} 매도 등록이 접수되었습니다. 검증 실사 일정을 안내드리겠습니다.`, 'success', 6000);
+  }, 200);
+  setTimeout(()=>{
+    showToast('콜백 안내', `📞 ${name}님 연락처(${phone})로 담당 중개사가 검증 실사 일정을 협의하기 위해 연락드립니다.`, 'info', 8000);
+  }, 2400);
+}
+
+/* ════════════════════════════════════════
+   NEWSLETTER
+   ════════════════════════════════════════ */
+function submitNewsletter(e){
+  e.preventDefault();
+  const em = document.getElementById('nl-email').value.trim();
+  if(!em) return;
+  if(!getSession()){
+    showToast('로그인 필요', '뉴스레터 구독은 로그인 후 이용하실 수 있습니다.', 'warn', 4500);
+    e.target.reset();
+    setTimeout(()=>openModal('authModal'), 600);
+    return;
+  }
+  DB.push('newsletter', { email: em, date: nowStr() });
+  trackAction('뉴스레터_구독');
+  e.target.reset();
+  setTimeout(()=>{
+    showToast('뉴스레터 구독 완료!', `${em} 주소로 자원순환 M&A 뉴스레터를 발송해 드립니다.`, 'success');
+  }, 100);
+}
+
+/* ════════════════════════════════════════
+   ADMIN MODE
+   ════════════════════════════════════════ */
+const ADMIN_ID = 'admin';
+const ADMIN_PW = 'ecobiz2025';
+
+function openAdmin(){
+  document.getElementById('adminOverlay').classList.add('open');
+  document.getElementById('adminOverlay').style.display='flex';
+  document.getElementById('adminLoginScreen').style.display='flex';
+  document.getElementById('adminDashScreen').style.display='none';
+  document.getElementById('adm-login-err').textContent='';
+  document.getElementById('adm-id').value='';
+  document.getElementById('adm-pw').value='';
+  document.body.style.overflow='hidden';
+}
+
+function closeAdmin(){
+  document.getElementById('adminOverlay').style.display='none';
+  document.body.style.overflow='';
+}
+
+function doAdminLogin(){
+  const id = document.getElementById('adm-id').value.trim();
+  const pw = document.getElementById('adm-pw').value;
+  if(id===ADMIN_ID && pw===ADMIN_PW){
+    document.getElementById('adminLoginScreen').style.display='none';
+    document.getElementById('adminDashScreen').style.display='flex';
+    renderAdminDashboard();
+  } else {
+    document.getElementById('adm-login-err').textContent='아이디 또는 비밀번호가 올바르지 않습니다.';
+    document.getElementById('adm-pw').value='';
+  }
+}
+
+function switchAdmTab(name, btn){
+  document.querySelectorAll('.adm-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.adm-pane').forEach(p=>p.classList.remove('active'));
+  document.getElementById('adm-'+name)?.classList.add('active');
+}
+
+function renderAdminDashboard(){
+  const members  = DB.get('members');
+  const inquiries= DB.get('inquiries');
+  const sellRegs = DB.get('sell_regs');
+  const nav      = DB.getObj('nav', {});
+  const actions  = DB.getObj('actions', {});
+
+  /* ── KPIs ── */
+  const kpiData = [
+    { num: members.length,   label: '총 회원가입',   sub: '누적 가입자 수' },
+    { num: sellRegs.length,  label: '매도 등록',      sub: '접수된 매물 신청' },
+    { num: inquiries.length, label: '매수·중개 문의', sub: '접수된 문의 건수' },
+    { num: Object.values(nav).reduce((a,b)=>a+b,0), label: '총 메뉴 클릭', sub: '섹션 이동 합계' },
+  ];
+  document.getElementById('adm-kpis').innerHTML = kpiData.map(k=>`
+    <div class="adm-kpi"><div class="num">${k.num}</div><div class="label">${k.label}</div><div class="sub">${k.sub}</div></div>`).join('');
+
+  /* ── Recent activity ── */
+  const recent = [
+    ...members.map(m=>({type:'회원가입', name: m.name, detail: m.role, date: m.date})),
+    ...sellRegs.map(r=>({type:'매도등록', name: r.company, detail: r.industry.slice(0,12), date: r.date})),
+    ...inquiries.map(i=>({type:'매수문의', name: i.name, detail: i.typeLabel, date: i.date})),
+  ].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,5);
+  const typeBg={회원가입:'t-success',매도등록:'t-warn',매수문의:'t-info'};
+  document.getElementById('adm-recent-body').innerHTML = recent.length ? recent.map(r=>`
+    <tr><td><span style="padding:2px 8px;border-radius:6px;font-size:.72rem;font-weight:700;background:rgba(255,255,255,.08)">${r.type}</span></td>
+    <td>${r.name}</td><td style="opacity:.7">${r.detail}</td><td style="opacity:.5;white-space:nowrap">${r.date}</td></tr>`).join('')
+    : '<tr><td colspan="4" class="adm-empty">아직 활동 내역이 없습니다.</td></tr>';
+
+  /* ── Members ── */
+  document.getElementById('adm-member-count').textContent = members.length;
+  const roleClass={매수자:'buyer',매도자:'seller',전문중개사:'broker'};
+  document.getElementById('adm-member-body').innerHTML = members.length ? members.map(m=>`
+    <tr><td>${m.name}</td>
+    <td><span class="adm-role-chip ${roleClass[m.role]||'buyer'}">${m.role}</span></td>
+    <td>${m.email}</td><td>${m.phone}</td>
+    <td style="opacity:.5;white-space:nowrap">${m.date}</td></tr>`).join('') : '';
+  document.getElementById('adm-member-empty').style.display = members.length ? 'none':'block';
+
+  /* ── Sell regs ── */
+  document.getElementById('adm-sell-count').textContent = sellRegs.length;
+  document.getElementById('adm-sell-body').innerHTML = sellRegs.length ? sellRegs.map(r=>`
+    <tr><td>${r.name}</td><td style="font-weight:700">${r.company}</td>
+    <td style="font-size:.78rem;opacity:.8">${r.industry.slice(0,14)}</td>
+    <td>${r.region}</td><td style="color:#74c69d;font-weight:700">${r.price}억</td>
+    <td style="opacity:.5;white-space:nowrap">${r.date}</td></tr>`).join('') : '';
+  document.getElementById('adm-sell-empty').style.display = sellRegs.length ? 'none':'block';
+
+  /* ── Buy inquiries ── */
+  document.getElementById('adm-buy-count').textContent = inquiries.length;
+  const typeClass={buy:'buy',sell:'sell','매수 관심':'buy','매도 등록':'sell'};
+  document.getElementById('adm-buy-body').innerHTML = inquiries.length ? inquiries.map(i=>`
+    <tr><td>${i.name}</td><td>${i.phone}</td><td>${i.email}</td>
+    <td><span class="adm-type-chip ${typeClass[i.type]||'other'}">${i.typeLabel||i.type}</span></td>
+    <td style="opacity:.7">${i.company||'—'}</td>
+    <td style="opacity:.5;white-space:nowrap">${i.date}</td></tr>`).join('') : '';
+  document.getElementById('adm-buy-empty').style.display = inquiries.length ? 'none':'block';
+
+  /* ── Nav chart ── */
+  const navMax = Math.max(...Object.values(nav), 1);
+  document.getElementById('adm-nav-chart').innerHTML = Object.keys(nav).length ?
+    Object.entries(nav).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`
+      <div class="adm-bar-row">
+        <span class="adm-bar-label">${k}</span>
+        <div class="adm-bar-track"><div class="adm-bar-fill" style="width:${Math.round(v/navMax*100)}%"></div></div>
+        <span class="adm-bar-val">${v}</span>
+      </div>`).join('')
+    : '<div style="opacity:.4;font-size:.83rem">아직 메뉴 클릭 데이터가 없습니다.</div>';
+
+  /* ── Action chart ── */
+  const actMax = Math.max(...Object.values(actions), 1);
+  document.getElementById('adm-action-chart').innerHTML = Object.keys(actions).length ?
+    Object.entries(actions).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`
+      <div class="adm-bar-row">
+        <span class="adm-bar-label">${k}</span>
+        <div class="adm-bar-track"><div class="adm-bar-fill" style="width:${Math.round(v/actMax*100)}%;background:linear-gradient(90deg,#f4a261,#e76f51)"></div></div>
+        <span class="adm-bar-val">${v}</span>
+      </div>`).join('')
+    : '<div style="opacity:.4;font-size:.83rem">아직 액션 데이터가 없습니다.</div>';
+}
+
+/* ════════════════════════════════════════
+   FEATURE 1: USER SELL LISTINGS AUTO-DISPLAY
+   ════════════════════════════════════════ */
+const INDUSTRY_CAT = {
+  '재활용업':'재활용업','중간재활용업':'재활용업','종합재활용업':'재활용업','최종재활용업':'재활용업',
+  '처리업':'처리업','중간처리업':'처리업','최종처리업':'처리업','건설폐기물':'처리업',
+  '자원화업':'자원화업','열분해':'자원화업','바이오가스':'자원화업','탄화':'자원화업',
+  '수집':'수집·운반업','운반':'수집·운반업'
+};
+
+function industryToCategory(ind){
+  for(const [k,v] of Object.entries(INDUSTRY_CAT)){
+    if(ind.includes(k)) return v;
+  }
+  return '재활용업';
+}
+
+function regToListing(reg, index){
+  const now = reg.date || '';
+  const regionFull = {
+    서울:'서울특별시',경기:'경기도',인천:'인천광역시',부산:'부산광역시',대구:'대구광역시',
+    광주:'광주광역시',울산:'울산광역시',대전:'대전광역시',세종:'세종특별자치시',
+    강원:'강원도',충북:'충청북도',충남:'충청남도',전북:'전북특별자치도',전남:'전라남도',
+    경북:'경상북도',경남:'경상남도',제주:'제주특별자치도'
+  };
+  const loc = regionFull[reg.region] ? regionFull[reg.region]+' 소재' : reg.region || '전국';
+  return {
+    id: 'UR-'+(index+1),
+    name: reg.company || '등록 기업',
+    badge: '신규 접수',
+    badge_color: '#e63946',
+    location: loc,
+    address: loc,
+    business_type: reg.industry || '자원순환 관련업',
+    business_category: industryToCategory(reg.industry||''),
+    established_year: null,
+    employees: null,
+    annual_revenue: '비공개',
+    operating_profit: '비공개',
+    net_profit: '비공개',
+    ebitda: '비공개',
+    license_capacity: '확인 필요',
+    asking_price: reg.price && reg.price!=='협의' ? reg.price+'억원' : '협의',
+    price_note: '중개팀 문의',
+    land_area: '확인 필요', building_area: '확인 필요', land_type: '확인 필요',
+    status: '신규 접수',
+    status_color: '#e63946',
+    licenses: [], facilities: [], certifications: [],
+    features: reg.note ? [reg.note] : ['상세 정보는 중개팀 문의 후 NDA 체결 시 제공됩니다.'],
+    reason_for_sale: '등록 접수 중',
+    description: reg.note || '최근 신규 접수된 매물입니다. 에코비즈마켓 중개팀에 문의하시면 상세 정보를 안내해 드립니다.',
+    financial_summary: '재무 정보는 NDA 체결 후 제공됩니다.',
+    location_advantage: loc,
+    isUserListing: true,
+    regDate: now
+  };
+}
+
+function getUserListings(){
+  return DB.get('sell_regs').map((r,i)=>regToListing(r,i));
+}
+
+/* Override applyFilters — call original then prepend user listings */
+const _origApplyFilters = applyFilters;
+applyFilters = function(){
+  _origApplyFilters();
+  const userListings = getUserListings();
+  if(!userListings.length) return;
+  const grid = document.getElementById('cardsGrid');
+  if(!grid) return;
+  // Build user listing cards matching the original card template style
+  const userHTML = userListings.map(c=>`
+    <div class="card card-new" onclick="showToast('신규 접수 매물','중개팀 검토 후 상세 정보가 공개됩니다. 문의: bsj0431@gmail.com','info',6000)" style="border-top:3px solid #e63946;cursor:pointer">
+      <div class="card-bar" style="background:#e63946"></div>
+      <div class="card-body">
+        <div class="card-badges">
+          <span class="badge" style="background:#e63946">🆕 신규 접수</span>
+          <span class="badge-status" style="background:#e63946">접수중</span>
+        </div>
+        <h3>${c.name}</h3>
+        <div class="card-meta">📍 ${c.location}</div>
+        <div class="card-type">${c.business_category} · ${(c.business_type||'').length>18?(c.business_type||'').slice(0,18)+'…':c.business_type}</div>
+        <hr class="divider">
+        <div class="card-metrics">
+          <div class="metric"><div class="metric-val">비공개</div><div class="metric-label">연 매출</div></div>
+          <div class="metric"><div class="metric-val">확인 필요</div><div class="metric-label">허가용량</div></div>
+          <div class="metric"><div class="metric-val">-</div><div class="metric-label">직원수</div></div>
+        </div>
+        <div class="card-price">
+          <div class="price-label">희망 매각가</div>
+          <div class="price-val">${c.asking_price}</div>
+          <div class="price-note">중개팀 문의</div>
+        </div>
+        <div style="font-size:.71rem;color:#e63946;font-weight:700;margin-top:8px;padding:5px 8px;background:#fff0f0;border-radius:4px">🔄 중개팀 검토 진행중 — 상세 정보 공개 예정</div>
+      </div>
+    </div>`).join('');
+  grid.innerHTML = userHTML + grid.innerHTML;
+  // Update count
+  const rc = document.getElementById('result-count');
+  if(rc){
+    const orig = parseInt(rc.textContent.replace(/[^0-9]/g,''))||0;
+    rc.textContent = `총 ${orig + userListings.length}건`;
+  }
+};
+
+/* ════════════════════════════════════════
+   NEWSLETTER SYSTEM
+   ════════════════════════════════════════ */
+let _nlCurrentId = null; // currently editing/previewing
+
+function getNlIssueNumber(){
+  return (DB.get('newsletters').length) + 1;
+}
+
+function nowDate(){
+  const d = new Date();
+  return `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`;
+}
+
+function nowDateISO(){
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+
+function openNlEditor(existingId){
+  const editor = document.getElementById('adm-nl-editor');
+  editor.style.display = 'block';
+  editor.scrollIntoView({behavior:'smooth', block:'start'});
+  if(existingId){
+    const nls = DB.get('newsletters');
+    const nl = nls.find(n=>n.id===existingId);
+    if(!nl) return;
+    _nlCurrentId = existingId;
+    document.getElementById('nl-edit-id').value = existingId;
+    document.getElementById('nl-title').value = nl.title;
+    document.getElementById('nl-date').value = nl.date;
+    document.getElementById('nl-s-listings').value = nl.s_listings||'';
+    document.getElementById('nl-s-policy').value = nl.s_policy||'';
+    document.getElementById('nl-s-global').value = nl.s_global||'';
+    document.getElementById('nl-s-law').value = nl.s_law||'';
+  } else {
+    _nlCurrentId = null;
+    const issue = getNlIssueNumber();
+    const today = nowDate();
+    document.getElementById('nl-edit-id').value = '';
+    document.getElementById('nl-title').value = `RA 뉴스레터 산단 분양 뉴스레터 제${issue}호 (${today})`;
+    document.getElementById('nl-date').value = nowDateISO();
+    document.getElementById('nl-s-listings').value = '';
+    document.getElementById('nl-s-policy').value = '';
+    document.getElementById('nl-s-global').value = '';
+    document.getElementById('nl-s-law').value = '';
+  }
+}
+
+function closeNlEditor(){
+  document.getElementById('adm-nl-editor').style.display='none';
+  _nlCurrentId = null;
+}
+
+function autoGenerateNewsletter(){
+  const regs = DB.get('sell_regs');
+  const issue = getNlIssueNumber();
+  const today = nowDate();
+  openNlEditor();
+  // Auto-populate listings section
+  if(regs.length){
+    const latestListings = regs.slice(0,3).map(r=>
+      `• ${r.company} (${r.region}) — ${r.industry.split('(')[0].trim()}, 희망가 ${r.price||'협의'}억원\n  ${r.note||'상세 내용 중개팀 문의'}`
+    ).join('\n\n');
+    document.getElementById('nl-s-listings').value = latestListings;
+  }
+  document.getElementById('nl-s-policy').value = '[이번 주 업계 정책 동향을 입력하세요]';
+  document.getElementById('nl-s-global').value = '[글로벌 자원순환 뉴스를 입력하세요]';
+  document.getElementById('nl-s-law').value = '[관계 법령 개정 동향을 입력하세요]';
+  showToast('자동 초안 작성', '최신 매도 등록 데이터로 뉴스레터 초안을 작성했습니다. 내용을 편집 후 발행하세요.', 'info', 5000);
+}
+
+function saveNlDraft(){
+  const title = document.getElementById('nl-title').value;
+  const date  = document.getElementById('nl-date').value;
+  const s_listings = document.getElementById('nl-s-listings').value.trim();
+  const s_policy   = document.getElementById('nl-s-policy').value.trim();
+  const s_global   = document.getElementById('nl-s-global').value.trim();
+  const s_law      = document.getElementById('nl-s-law').value.trim();
+  const nls = DB.get('newsletters');
+  const existId = document.getElementById('nl-edit-id').value;
+  const issue = existId ? (nls.find(n=>n.id===existId)||{issue:nls.length+1}).issue : nls.length+1;
+  const id = existId || ('NL-'+Date.now());
+  const nl = { id, issue, title, date, s_listings, s_policy, s_global, s_law, status:'draft', createdAt: nowStr() };
+  if(existId){
+    const idx = nls.findIndex(n=>n.id===existId);
+    if(idx>=0){ nls[idx]={...nls[idx],...nl}; DB.set('newsletters',nls); }
+  } else {
+    DB.push('newsletters', nl);
+  }
+  document.getElementById('nl-edit-id').value = id;
+  _nlCurrentId = id;
+  renderNewsletterAdmin();
+  showToast('초안 저장 완료', `${title} 초안이 저장되었습니다.`, 'success', 3000);
+}
+
+function previewNl(){
+  saveNlDraft();
+  const id = document.getElementById('nl-edit-id').value || _nlCurrentId;
+  if(!id){ showToast('오류','먼저 초안을 저장해 주세요.','warn'); return; }
+  openNlViewer(id, true);
+}
+
+function openNlViewer(id, showApprove){
+  const nls = DB.get('newsletters');
+  const nl = nls.find(n=>n.id===id);
+  if(!nl){ showToast('오류','뉴스레터를 찾을 수 없습니다.','error'); return; }
+  _nlCurrentId = id;
+  document.getElementById('nl-viewer-title').textContent = nl.title;
+  document.getElementById('nl-viewer-body').innerHTML = generateNewsletterHTML(nl);
+  const approveBtn = document.getElementById('nl-viewer-approve-btn');
+  approveBtn.style.display = (showApprove && nl.status==='draft') ? 'block' : 'none';
+  document.getElementById('nlViewer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeNlViewer(){
+  document.getElementById('nlViewer').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function approveCurrentNl(){
+  if(!_nlCurrentId) return;
+  approveAndPublishNl(_nlCurrentId);
+  document.getElementById('nl-viewer-approve-btn').style.display='none';
+}
+
+function approveAndPublishNl(id){
+  const targetId = id || document.getElementById('nl-edit-id').value;
+  if(!targetId){ saveNlDraft(); return; }
+  const nls = DB.get('newsletters');
+  const idx = nls.findIndex(n=>n.id===targetId);
+  if(idx<0) return;
+  nls[idx].status = 'published';
+  nls[idx].publishedAt = nowStr();
+  DB.set('newsletters', nls);
+  closeNlEditor();
+  renderNewsletterAdmin();
+  renderDrNlArchive();
+  showToast('뉴스레터 발행 완료!', `${nls[idx].title}이(가) 발행되어 자료실에 게재되었습니다.`, 'success', 5000);
+  setTimeout(()=>showToast('이메일 발송', '구독자 이메일 발송을 위해 관리자 탭 하단의 "이메일 발송 준비" 버튼을 클릭하세요.','info',7000),2000);
+}
+
+function buildNlEmailBody(nl){
+  return `안녕하세요, 에코비즈마켓입니다.\n\n${nl.title}을 발송드립니다.\n\n` +
+    `■ 신규 매물 소개\n${nl.s_listings||'내용 없음'}\n\n` +
+    `■ 업계 동향 및 정책\n${nl.s_policy||'내용 없음'}\n\n` +
+    `■ 글로벌 뉴스\n${nl.s_global||'내용 없음'}\n\n` +
+    `■ 관계 법령·제도 개선\n${nl.s_law||'내용 없음'}\n\n` +
+    `──────────────────\n문의: bsj0431@gmail.com\nⓒ 에코비즈마켓`;
+}
+
+function copyNlText(elId, btn){
+  const txt = document.getElementById(elId).value;
+  const done = ()=>{ const o=btn.textContent; btn.textContent='✅ 복사됨'; setTimeout(()=>btn.textContent=o,1500); };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(done).catch(()=>{ fallbackCopy(elId); done(); });
+  } else { fallbackCopy(elId); done(); }
+}
+function fallbackCopy(elId){
+  const el = document.getElementById(elId);
+  el.focus(); el.select();
+  try{ document.execCommand('copy'); }catch(e){}
+}
+
+function openNlMailApp(){
+  const subs = DB.get('newsletter');
+  const nls = DB.get('newsletters').filter(n=>n.status==='published');
+  if(!nls.length) return;
+  const latest = nls[0];
+  const emails = subs.map(s=>s.email).join(',');
+  // mailto body는 URL 길이 제한이 있어 요약본만 담고, 전문은 복사 버튼 사용 안내
+  const shortBody = `${latest.title}\n\n(본문은 에코비즈마켓 관리자 발송 패널에서 '본문 복사' 후 붙여넣어 주세요)\n\n문의: bsj0431@gmail.com`;
+  const a = document.createElement('a');
+  a.href = `mailto:bsj0431@gmail.com?bcc=${encodeURIComponent(emails)}&subject=${encodeURIComponent(latest.title)}&body=${encodeURIComponent(shortBody)}`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  showToast('메일 앱 호출', '기본 메일 앱이 설정되어 있지 않으면 창이 열리지 않을 수 있습니다. 이 경우 복사 버튼을 이용해 주세요.', 'info', 6000);
+}
+
+function closeNlSendPanel(){
+  const p = document.getElementById('nlSendPanel');
+  if(p) p.remove();
+}
+
+function sendNlEmail(){
+  const subs = DB.get('newsletter'); // subscriber list
+  if(!subs.length){
+    showToast('구독자 없음','아직 뉴스레터 구독 신청자가 없습니다.','warn');
+    return;
+  }
+  const nls = DB.get('newsletters').filter(n=>n.status==='published');
+  if(!nls.length){
+    showToast('발행 뉴스레터 없음','발행된 뉴스레터가 없습니다. 먼저 뉴스레터를 발행해 주세요.','warn');
+    return;
+  }
+  const latest = nls[0];
+  const emails = subs.map(s=>s.email).join(', ');
+  const body = buildNlEmailBody(latest);
+  closeNlSendPanel();
+  const panel = document.createElement('div');
+  panel.id = 'nlSendPanel';
+  panel.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px';
+  panel.innerHTML = `
+    <div style="background:#16211c;border:1px solid #2d6a4f;border-radius:14px;max-width:640px;width:100%;max-height:88vh;overflow-y:auto;padding:26px;color:#e8f0eb">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+        <div style="font-weight:800;font-size:1.05rem">📧 뉴스레터 이메일 발송</div>
+        <button onclick="closeNlSendPanel()" style="background:none;border:none;color:#9fb8aa;font-size:1.2rem;cursor:pointer">✕</button>
+      </div>
+      <div style="font-size:.82rem;color:#9fb8aa;margin-bottom:16px">${latest.title}<br>구독자 <b style="color:#74c69d">${subs.length}명</b>에게 발송합니다. 아래 내용을 복사해 메일로 보내거나, 메일 앱 열기를 이용하세요.</div>
+
+      <label style="font-size:.75rem;font-weight:700;color:#74c69d">받는사람 (BCC 권장)</label>
+      <div style="display:flex;gap:8px;margin:6px 0 14px">
+        <textarea id="nl-send-to" readonly rows="2" style="flex:1;background:#0d1512;border:1px solid #2a3a32;border-radius:8px;color:#cfe3d8;padding:8px;font-size:.78rem;resize:none">${emails}</textarea>
+        <button onclick="copyNlText('nl-send-to',this)" style="background:#2d6a4f;border:none;color:#fff;border-radius:8px;padding:0 14px;font-size:.78rem;cursor:pointer;white-space:nowrap">복사</button>
+      </div>
+
+      <label style="font-size:.75rem;font-weight:700;color:#74c69d">제목</label>
+      <div style="display:flex;gap:8px;margin:6px 0 14px">
+        <textarea id="nl-send-subject" readonly rows="1" style="flex:1;background:#0d1512;border:1px solid #2a3a32;border-radius:8px;color:#cfe3d8;padding:8px;font-size:.78rem;resize:none">${latest.title}</textarea>
+        <button onclick="copyNlText('nl-send-subject',this)" style="background:#2d6a4f;border:none;color:#fff;border-radius:8px;padding:0 14px;font-size:.78rem;cursor:pointer;white-space:nowrap">복사</button>
+      </div>
+
+      <label style="font-size:.75rem;font-weight:700;color:#74c69d">본문</label>
+      <div style="display:flex;gap:8px;margin:6px 0 18px">
+        <textarea id="nl-send-body" readonly rows="9" style="flex:1;background:#0d1512;border:1px solid #2a3a32;border-radius:8px;color:#cfe3d8;padding:8px;font-size:.78rem;line-height:1.5"></textarea>
+        <button onclick="copyNlText('nl-send-body',this)" style="background:#2d6a4f;border:none;color:#fff;border-radius:8px;padding:0 14px;font-size:.78rem;cursor:pointer;white-space:nowrap;align-self:stretch">복사</button>
+      </div>
+
+      <div style="display:flex;gap:10px;justify-content:flex-end">
+        <button onclick="openNlMailApp()" style="background:#1b4332;border:1px solid #2d6a4f;color:#d8f3dc;border-radius:8px;padding:10px 16px;font-size:.82rem;cursor:pointer;font-weight:700">📮 메일 앱 열기</button>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&bcc=${encodeURIComponent(subs.map(s=>s.email).join(','))}&su=${encodeURIComponent(latest.title)}" target="_blank" rel="noopener" style="background:#2d6a4f;color:#fff;border-radius:8px;padding:10px 16px;font-size:.82rem;font-weight:700;text-decoration:none">✉️ Gmail로 보내기</a>
+        <button onclick="closeNlSendPanel()" style="background:none;border:1px solid #3a4a42;color:#9fb8aa;border-radius:8px;padding:10px 16px;font-size:.82rem;cursor:pointer">닫기</button>
+      </div>
+    </div>`;
+  document.body.appendChild(panel);
+  document.getElementById('nl-send-body').value = body;
+}
+
+function printNl(){
+  const content = document.getElementById('nl-viewer-body').innerHTML;
+  const win = window.open('','_blank');
+  win.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>RA 뉴스레터</title>
+    <style>@media print{body{margin:0}}</style></head><body>${content}</body></html>`);
+  win.document.close();
+  setTimeout(()=>win.print(), 500);
+}
+
+function generateNewsletterHTML(nl){
+  const sections = [
+    { icon:'🏭', title:'신규 매물 소개', color:'#2d6a4f', body: nl.s_listings||'이번 호 신규 매물 정보가 없습니다.' },
+    { icon:'📋', title:'업계 동향 및 정책', color:'#1b4332', body: nl.s_policy||'업계 동향 정보가 없습니다.' },
+    { icon:'🌐', title:'글로벌 뉴스', color:'#40916c', body: nl.s_global||'글로벌 뉴스 정보가 없습니다.' },
+    { icon:'⚖️', title:'관계 법령·제도 개선', color:'#0d3324', body: nl.s_law||'법령 동향 정보가 없습니다.' },
+  ];
+  const bodyToHTML = t => t.split('\n').map(l=>l.trim()?`<p style="margin:0 0 7px;line-height:1.65">${l}</p>`:'').join('');
+
+  return `<div style="font-family:'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#f0f4f1">
+  <!-- HEADER -->
+  <div style="background:linear-gradient(135deg,#1b4332 0%,#2d6a4f 100%);padding:36px 40px 28px;text-align:center">
+    <div style="font-size:10px;letter-spacing:3px;color:rgba(255,255,255,.55);text-transform:uppercase;margin-bottom:8px">RESOURCE CIRCULATION INDUSTRY</div>
+    <h1 style="margin:0 0 6px;font-size:24px;font-weight:900;color:#fff;letter-spacing:-0.5px">RA 뉴스레터</h1>
+    <div style="font-size:13px;color:#74c69d;font-weight:700;letter-spacing:1px">산단 분양 뉴스레터</div>
+    <div style="width:48px;height:2px;background:#74c69d;margin:14px auto 12px"></div>
+    <div style="color:rgba(255,255,255,.7);font-size:12px">${nl.title.match(/제\d+호/)?.[0]||'제'+nl.issue+'호'} &nbsp;|&nbsp; ${nl.date||nowDate()}</div>
+  </div>
+  <!-- INTRO BAR -->
+  <div style="background:#d8f3dc;padding:12px 40px;text-align:center;font-size:12px;color:#1b4332;font-weight:600">
+    자원순환기업 M&amp;A 전문 플랫폼 에코비즈마켓이 전하는 이번 주 업계 소식입니다.
+  </div>
+  <!-- 3-COLUMN GRID -->
+  <div style="padding:28px 24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+    ${sections.slice(0,3).map(s=>`
+    <div style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.07)">
+      <div style="background:${s.color};padding:14px 16px;display:flex;align-items:center;gap:8px">
+        <span style="font-size:18px">${s.icon}</span>
+        <span style="font-size:13px;font-weight:800;color:#fff">${s.title}</span>
+      </div>
+      <div style="padding:16px;font-size:12px;color:#333;min-height:120px">${bodyToHTML(s.body)}</div>
+    </div>`).join('')}
+  </div>
+  <!-- FULL-WIDTH 4TH SECTION -->
+  <div style="padding:0 24px 24px">
+    <div style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.07)">
+      <div style="background:${sections[3].color};padding:14px 20px;display:flex;align-items:center;gap:8px">
+        <span style="font-size:18px">${sections[3].icon}</span>
+        <span style="font-size:13px;font-weight:800;color:#fff">${sections[3].title}</span>
+      </div>
+      <div style="padding:18px 20px;font-size:12px;color:#333">${bodyToHTML(sections[3].body)}</div>
+    </div>
+  </div>
+  <!-- FOOTER -->
+  <div style="background:#1b4332;padding:20px 40px;text-align:center">
+    <div style="font-size:13px;font-weight:800;color:#74c69d;margin-bottom:4px">에코비즈마켓 | EcoBiz Market</div>
+    <div style="font-size:11px;color:rgba(255,255,255,.55)">자원순환기업 전문 M&amp;A 거래소</div>
+    <div style="margin:10px 0;height:1px;background:rgba(255,255,255,.1)"></div>
+    <div style="font-size:11px;color:rgba(255,255,255,.5)">문의: <a href="mailto:bsj0431@gmail.com" style="color:#74c69d">bsj0431@gmail.com</a></div>
+    <div style="font-size:10px;color:rgba(255,255,255,.3);margin-top:6px">본 뉴스레터는 에코비즈마켓 구독자에게 발송됩니다. 수신 거부는 위 이메일로 문의해 주세요.</div>
+  </div>
+</div>`;
+}
+
+function renderNewsletterAdmin(){
+  const nls = DB.get('newsletters');
+  const subs = DB.get('newsletter');
+  // Issue count
+  const pubCount = nls.filter(n=>n.status==='published').length;
+  document.getElementById('adm-nl-count-label').textContent = `총 ${pubCount}호 발행 (초안 ${nls.length-pubCount}건)`;
+  // Cards
+  const cardsEl = document.getElementById('adm-nl-cards');
+  if(!nls.length){
+    cardsEl.innerHTML='<div style="opacity:.4;font-size:.83rem;padding:16px 0">발행된 뉴스레터가 없습니다. 새 호를 작성해 주세요.</div>';
+  } else {
+    cardsEl.innerHTML = nls.map(nl=>`
+      <div class="adm-nl-card">
+        <div class="adm-nl-card-num">제${nl.issue}호</div>
+        <div class="adm-nl-card-info">
+          <div class="adm-nl-card-title">${nl.title}</div>
+          <div class="adm-nl-card-meta">${nl.date||''} &nbsp;·&nbsp; <span class="${nl.status==='published'?'nl-status-pub':'nl-status-draft'}">${nl.status==='published'?'✅ 발행됨':'📝 초안'}</span> &nbsp;·&nbsp; 작성 ${nl.createdAt||''}</div>
+        </div>
+        <div class="adm-nl-card-btns">
+          <button class="btn-preview" onclick="openNlViewer('${nl.id}',${nl.status==='draft'})">미리보기</button>
+          ${nl.status==='draft'?`<button class="btn-approve" onclick="approveAndPublishNl('${nl.id}')">발행</button>`:''}
+          <button class="btn-preview" onclick="openNlEditor('${nl.id}')">편집</button>
+        </div>
+      </div>`).join('');
+  }
+  // Subscribers
+  document.getElementById('adm-sub-count').textContent = subs.length+'명';
+  const subBody = document.getElementById('adm-sub-body');
+  if(!subs.length){
+    subBody.innerHTML='<tr><td colspan="3" style="opacity:.4;padding:12px">구독 신청자가 없습니다.</td></tr>';
+    document.getElementById('adm-sub-empty').style.display='block';
+  } else {
+    subBody.innerHTML = subs.map((s,i)=>`<tr><td>${i+1}</td><td>${s.email}</td><td style="opacity:.5">${s.date||''}</td></tr>`).join('');
+  }
+}
+
+function renderDrNlArchive(){
+  const nls = DB.get('newsletters').filter(n=>n.status==='published');
+  const el = document.getElementById('dr-nl-archive');
+  if(!el) return;
+  if(!nls.length){
+    el.innerHTML='<div class="dr-nl-empty">아직 발행된 뉴스레터가 없습니다. 관리자 모드에서 뉴스레터를 작성·발행하면 여기에 표시됩니다.</div>';
+    return;
+  }
+  el.innerHTML = `<div class="dr-nl-list">${nls.map(nl=>`
+    <div class="dr-nl-item">
+      <div class="dr-nl-num">제${nl.issue}호</div>
+      <div class="dr-nl-info">
+        <div class="dr-nl-title">${nl.title}</div>
+        <div class="dr-nl-meta">발행일: ${nl.publishedAt||nl.date||''}</div>
+      </div>
+      <button class="dr-nl-btn" onclick="requireLogin(()=>openNlViewer('${nl.id}',false),'뉴스레터 열람')">열람하기 →</button>
+    </div>`).join('')}
+  </div>`;
+}
+
+/* Hook into renderAdminDashboard to also render newsletter tab */
+const _origRenderAdmin = renderAdminDashboard;
+renderAdminDashboard = function(){
+  _origRenderAdmin();
+  renderNewsletterAdmin();
+};
+
+/* Seed: 창간호 — 발행된 뉴스레터가 하나도 없으면 기본 내장 */
+(function seedNewsletter(){
+  const nls = DB.get('newsletters');
+  if(nls.length) return;
+  DB.set('newsletters', [{
+    id: 'NL-SEED-1',
+    issue: 1,
+    title: 'RA 뉴스레터 산단 분양 뉴스레터 제1호 (2026.07.16)',
+    date: '2026-07-16',
+    s_listings: '• (주)반월그린텍 (경기 안산) — 폐합성수지 재활용업, 희망가 62~72억원\n  반월산단 내 일 80톤 허가, 연매출 54억원, 대기업 거래처 5곳 이상\n\n• (주)용인환경솔루션 (경기 용인) — 지정폐기물 중간처리업, 희망가 130~160억원\n  환경부 지정폐기물 허가 보유(신규취득 사실상 불가), 연매출 89억원\n\n• (주)울산열분해연료 (울산 울주) — 폐플라스틱 열분해유(RPO), 희망가 68~82억원\n  촉매 열분해 특허 2건, 수율 42%, SK·GS 납품 MOU 체결',
+    s_policy: '환경부, 2026년 하반기 자원순환 허가기준 강화 예고 — 폐플라스틱 처리업체 재허가 심사 강화 방침. 기존 허가 보유 업체의 희소가치 상승 전망.\n\n순환경제사회 전환 촉진법 시행 2년차 — 순환자원 지정 품목 확대(폐배터리·폐패널 추가 검토).',
+    s_global: 'EU 순환경제 패키지 최종 합의 — 2030년까지 플라스틱 재활용률 55% 의무화 예정. 국내 재활용 원료 수출 기회 확대.\n\n일본, 폐플라스틱 열분해유 SAF(지속가능항공유) 상용화 실증 착수 — 국내 열분해 업계 기업가치 재평가 계기.',
+    s_law: '폐기물관리법 시행령 개정안 입법예고(2026.06) — 중간재활용업 허가용량 상향 조정.\n\n건설폐기물법 개정 — 순환골재 공공공사 의무사용 비율 40%→45% 상향(2027.01 시행 예정).',
+    status: 'published',
+    createdAt: '2026.07.16 09:00',
+    publishedAt: '2026.07.16 09:00'
+  }]);
+})();
 
 // init
 applyFilters();
+updateAuthHeader();
+renderDrNlArchive();
 </script>
 </body>
 </html>
