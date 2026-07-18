@@ -1618,6 +1618,88 @@ const DB = {
   setObj(k,v){ try{ localStorage.setItem('ebm_'+k, JSON.stringify(v)); }catch(e){} }
 };
 
+/* ════════════════════════════════════════
+   백엔드 API (Cloudflare Worker + KV)
+   — 모든 방문자가 동일한 데이터를 공유
+   — 서버 접속 불가 시 localStorage 단독으로 동작 (오프라인 폴백)
+   ════════════════════════════════════════ */
+const API_BASE = 'https://ecobiz-api.bsj0431.workers.dev';
+const SYNC_KEYS = ['members','inquiries','sell_regs','newsletter','newsletters'];
+
+const API = {
+  online: false,
+  async req(path, opts={}, admin=false){
+    const headers = {'Content-Type':'application/json'};
+    if(admin) headers['x-admin-token'] = 'ecobiz2025';
+    return fetch(API_BASE+path, {...opts, headers});
+  },
+  push(key, item){ // fire-and-forget 추가 (서버가 중복 자동 제거)
+    return this.req('/push',{method:'POST',body:JSON.stringify({key,item})}).catch(()=>null);
+  },
+  async login(email, pw){
+    try{ const r = await this.req('/login',{method:'POST',body:JSON.stringify({email,pw})}); return await r.json(); }
+    catch(e){ return null; }
+  },
+  async pub(){
+    try{ const r = await this.req('/pub'); return r.ok ? await r.json() : null; }
+    catch(e){ return null; }
+  },
+  async all(){
+    try{ const r = await this.req('/all',{},true); return r.ok ? await r.json() : null; }
+    catch(e){ return null; }
+  },
+  replace(key, items){
+    return this.req('/replace',{method:'POST',body:JSON.stringify({key,items})},true).catch(()=>null);
+  }
+};
+
+/* DB.push 후킹 — 로컬 저장과 동시에 서버에도 반영 */
+const _origDbPush = DB.push.bind(DB);
+DB.push = function(k, v){
+  _origDbPush(k, v);
+  if(SYNC_KEYS.includes(k)) API.push(k, v);
+};
+
+function mergeArrays(serverArr, localArr){
+  const seen = new Set((serverArr||[]).map(x=>JSON.stringify(x)));
+  const localOnly = (localArr||[]).filter(x=>!seen.has(JSON.stringify(x)));
+  return { merged:[...localOnly, ...(serverArr||[])], localOnly };
+}
+
+/* 페이지 로드 시: 서버 공개 데이터 수신 + 이 브라우저에만 있던 데이터 자동 업로드(이관) */
+async function syncFromServer(){
+  const pub = await API.pub();
+  if(!pub){ return; } // 오프라인 — 로컬 데이터로 동작
+  API.online = true;
+  [['sell_regs', pub.sell_regs], ['newsletters', pub.newsletters]].forEach(([k, serverArr])=>{
+    const { merged, localOnly } = mergeArrays(serverArr, DB.get(k));
+    DB.set(k, merged);
+    localOnly.forEach(item=>API.push(k, item)); // 로컬 전용 항목 서버로 이관
+  });
+  // 회원·문의·구독자: 로컬 항목을 서버로 업로드 (서버가 중복 제거)
+  ['members','inquiries','newsletter'].forEach(k=>{
+    DB.get(k).forEach(item=>API.push(k, item));
+  });
+  applyFilters();
+  renderDrNlArchive();
+}
+
+/* 관리자 진입 시: 서버 전체 데이터와 양방향 동기화 */
+async function syncAdminFromServer(){
+  const all = await API.all();
+  if(!all){ showToast('오프라인 모드','서버에 연결할 수 없어 이 브라우저의 데이터만 표시합니다.','warn',5000); return; }
+  API.online = true;
+  SYNC_KEYS.forEach(k=>{
+    const { merged, localOnly } = mergeArrays(all[k], DB.get(k));
+    DB.set(k, merged);
+    localOnly.forEach(item=>API.push(k, item));
+  });
+  renderAdminDashboard();
+  renderDrNlArchive();
+  applyFilters();
+  showToast('서버 동기화 완료','전체 회원·매물·뉴스레터 데이터를 서버와 동기화했습니다.','success',4000);
+}
+
 function nowStr(){
   const d=new Date();
   return `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
@@ -1728,13 +1810,23 @@ function selectRole(el){
   el.classList.add('selected');
 }
 
-function doLogin(){
+async function doLogin(){
   const email = document.getElementById('login-email').value.trim();
   const pw    = document.getElementById('login-pw').value;
   if(!email){ showToast('입력 오류', '이메일을 입력해 주세요.', 'warn'); return; }
   if(!pw)   { showToast('입력 오류', '비밀번호를 입력해 주세요.', 'warn'); return; }
-  const members = DB.get('members');
-  const user = members.find(m => m.email===email && m.pw===pw);
+  // 서버 우선 검증 → 실패 시 로컬 폴백
+  let user = null;
+  const srv = await API.login(email, pw);
+  if(srv && srv.ok){
+    user = srv.user;
+  } else if(srv && srv.ok===false){
+    showToast('로그인 실패', srv.message||'이메일 또는 비밀번호가 올바르지 않습니다.', 'error', 4000);
+    return;
+  } else {
+    const members = DB.get('members');
+    user = members.find(m => m.email===email && m.pw===pw);
+  }
   if(!user){
     showToast('로그인 실패', '이메일 또는 비밀번호가 올바르지 않습니다.', 'error', 4000);
     return;
@@ -1888,6 +1980,7 @@ function doAdminLogin(){
     document.getElementById('adminLoginScreen').style.display='none';
     document.getElementById('adminDashScreen').style.display='flex';
     renderAdminDashboard();
+    syncAdminFromServer(); // 서버 전체 데이터 동기화 후 재렌더
   } else {
     document.getElementById('adm-login-err').textContent='아이디 또는 비밀번호가 올바르지 않습니다.';
     document.getElementById('adm-pw').value='';
@@ -2173,7 +2266,7 @@ function saveNlDraft(){
   const nl = { id, issue, title, date, s_listings, s_policy, s_global, s_law, status:'draft', createdAt: nowStr() };
   if(existId){
     const idx = nls.findIndex(n=>n.id===existId);
-    if(idx>=0){ nls[idx]={...nls[idx],...nl}; DB.set('newsletters',nls); }
+    if(idx>=0){ nls[idx]={...nls[idx],...nl}; DB.set('newsletters',nls); API.replace('newsletters', nls); }
   } else {
     DB.push('newsletters', nl);
   }
@@ -2223,6 +2316,7 @@ function approveAndPublishNl(id){
   nls[idx].status = 'published';
   nls[idx].publishedAt = nowStr();
   DB.set('newsletters', nls);
+  API.replace('newsletters', nls); // 서버 반영 — 모든 방문자에게 공개
   closeNlEditor();
   renderNewsletterAdmin();
   renderDrNlArchive();
@@ -2497,7 +2591,8 @@ function importAllData(input){
       renderAdminDashboard();
       renderDrNlArchive();
       applyFilters();
-      showToast('가져오기 완료',`${merged}건의 새 데이터를 병합했습니다. (중복 자동 제외)`,'success',6000);
+      SYNC_KEYS.forEach(k=>API.replace(k, DB.get(k))); // 서버에도 반영
+      showToast('가져오기 완료',`${merged}건의 새 데이터를 병합했습니다. (중복 자동 제외, 서버 반영)`,'success',6000);
     }catch(err){
       showToast('가져오기 실패','파일을 읽을 수 없습니다: '+err.message,'warn');
     }
@@ -2528,6 +2623,7 @@ function importAllData(input){
 applyFilters();
 updateAuthHeader();
 renderDrNlArchive();
+syncFromServer(); // 백엔드 동기화 (서버 데이터 수신 + 로컬 데이터 이관)
 </script>
 </body>
 </html>

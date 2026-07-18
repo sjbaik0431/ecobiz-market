@@ -1,0 +1,14 @@
+{
+  "name": "ecobiz-api",
+  "main": "src/index.js",
+  "compatibility_date": "2026-07-01",
+  "kv_namespaces": [
+    {
+      "binding": "EBM_DATA",
+      "id": "baa5aa9dd41e4587970a6e374532d8fc"
+    }
+  ],
+  "vars": {
+    "ADMIN_TOKEN": "ecobiz2025"
+  }
+}
