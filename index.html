@@ -1256,6 +1256,9 @@ footer{background:var(--dark);color:rgba(255,255,255,.8);padding:48px 24px 24px}
       <span class="logo-small">♻ 에코비즈마켓</span>
       <h1>관리자 대시보드</h1>
       <span class="badge-admin">ADMIN</span>
+      <button onclick="exportAllData()" style="background:#1b4332;border:1px solid #2d6a4f;color:#d8f3dc;border-radius:8px;padding:7px 13px;font-size:.76rem;cursor:pointer;font-weight:700">⬇ 데이터 내보내기</button>
+      <button onclick="document.getElementById('ebm-import-file').click()" style="background:#1b4332;border:1px solid #2d6a4f;color:#d8f3dc;border-radius:8px;padding:7px 13px;font-size:.76rem;cursor:pointer;font-weight:700">⬆ 데이터 가져오기</button>
+      <input type="file" id="ebm-import-file" accept=".json" style="display:none" onchange="importAllData(this)">
       <button class="admin-close" onclick="closeAdmin()">✕ 닫기</button>
     </div>
     <div class="admin-body">
@@ -2449,6 +2452,58 @@ renderAdminDashboard = function(){
   _origRenderAdmin();
   renderNewsletterAdmin();
 };
+
+/* ════════════════════════════════════════
+   데이터 백업 / 복원 (localStorage는 사이트별 분리 저장이므로
+   아티팩트 ↔ GitHub Pages 간 데이터 이동에 사용)
+   ════════════════════════════════════════ */
+const EBM_KEYS = ['ebm_members','ebm_inquiries','ebm_sell_regs','ebm_newsletter','ebm_newsletters','ebm_nav','ebm_actions'];
+
+function exportAllData(){
+  const dump = { _meta:{ app:'ecobiz-market', exportedAt:new Date().toLocaleString('ko-KR'), version:1 } };
+  EBM_KEYS.forEach(k=>{ try{ dump[k] = JSON.parse(localStorage.getItem(k)||'[]'); }catch(e){ dump[k] = []; } });
+  const blob = new Blob([JSON.stringify(dump,null,2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `ecobiz-backup-${new Date().toISOString().slice(0,10)}.json`;
+  document.body.appendChild(a); a.click(); a.remove();
+  showToast('내보내기 완료','전체 데이터(회원·매도등록·문의·뉴스레터·구독자)가 JSON 파일로 다운로드되었습니다.','success',5000);
+}
+
+function importAllData(input){
+  const file = input.files && input.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = e=>{
+    try{
+      const dump = JSON.parse(e.target.result);
+      if(!dump._meta || dump._meta.app!=='ecobiz-market'){
+        showToast('가져오기 실패','에코비즈마켓 백업 파일이 아닙니다.','warn');
+        return;
+      }
+      let merged = 0;
+      EBM_KEYS.forEach(k=>{
+        if(!Array.isArray(dump[k])) return;
+        const cur = DB.get(k.replace('ebm_',''));
+        // 병합: 기존에 없는 항목만 추가 (JSON 문자열 기준 중복 제거)
+        const seen = new Set(cur.map(x=>JSON.stringify(x)));
+        dump[k].forEach(item=>{
+          const s = JSON.stringify(item);
+          if(!seen.has(s)){ cur.push(item); seen.add(s); merged++; }
+        });
+        localStorage.setItem(k, JSON.stringify(cur));
+      });
+      input.value = '';
+      renderAdminDashboard();
+      renderDrNlArchive();
+      applyFilters();
+      showToast('가져오기 완료',`${merged}건의 새 데이터를 병합했습니다. (중복 자동 제외)`,'success',6000);
+    }catch(err){
+      showToast('가져오기 실패','파일을 읽을 수 없습니다: '+err.message,'warn');
+    }
+  };
+  reader.readAsText(file);
+}
 
 /* Seed: 창간호 — 발행된 뉴스레터가 하나도 없으면 기본 내장 */
 (function seedNewsletter(){
